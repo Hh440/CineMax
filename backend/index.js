@@ -5,10 +5,8 @@ const port = 3000
 const prisma = new PrismaClient();
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
+app.use(express.json())
 app.get('/check-connection', async (req, res) => {
   try {
     await prisma.$connect();
