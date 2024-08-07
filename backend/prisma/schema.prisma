@@ -76,14 +76,34 @@ model User {
   name        String
   email       String    @unique
   password    String
-  role        Role
-  phone       String
-  orderId     String
+  phone       String?
+  orderId     String?
   reservations Reservation[]
+  account Account[]
 }
 
 enum Role {
   ADMIN
   CUSTOMER
   SUPERADMIN
+}
+
+model Account{
+   id          Int       @id @default(autoincrement())
+   userId      Int
+   type        String
+   provider     String
+   ProviderAccoountId  String
+   refresh_token   String
+   access_token   String
+   expires_at    Int?
+   token_type  String?
+   scope    String?
+   id_token  String?
+   session_state   String?
+
+   user User @relation(fields: [userId], references: [id], onDelete:Cascade)
+ 
+ @@unique([provider,ProviderAccoountId])
+
 }

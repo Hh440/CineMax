@@ -1,22 +1,17 @@
-const { PrismaClient } = require('@prisma/client')
 const express = require('express')
 const app = express()
 const port = 3000
-const prisma = new PrismaClient();
+const cors = require('cors')
+const authRoutes =require('./router/auth')
 
 
 
+
+app.use(cors())
 app.use(express.json())
-app.get('/check-connection', async (req, res) => {
-  try {
-    await prisma.$connect();
-    res.json({ message : " Prisma connection established "});
-  }
-  catch(err) {
-    console.log("Error occured while connecting to the database ", err );
-    res.json( { error : " error occured while connecting to the database  ", details : e.message });
-  }
-})
+
+app.use('/api/auth', authRoutes);
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
