@@ -66,7 +66,7 @@ router.post('/add-movie', async(req, res) => {
 router.post('/update-movie-details/:id', async (req, res)=> {
   const id = req.params.id;
 
-  const movie = await prisma.movie.findFirst({where : {id : id}});
+  const existingMovie = await prisma.movie.findFirst({where : {id : id}});
 
   const body = req.body;
 
