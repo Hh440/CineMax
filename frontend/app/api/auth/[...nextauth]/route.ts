@@ -23,8 +23,8 @@ export const authOptions :AuthOptions ={
                     throw new Error('Invalid Credentials')
                 }
 
-                const res = await fetch('http://localhost:3000/api/auth/credentials', {
-                    method: 'GET',
+                const res = await fetch('http://localhost:5000/api/auth/credentials', {
+                    method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(credentials)
                 });
