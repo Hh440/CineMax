@@ -7,6 +7,7 @@ import { useCallback, useState } from "react"
 import {FieldValues, SubmitHandler, useForm} from 'react-hook-form'
 import { AuthSocialButton } from "./AuthSocialButton"
 import { BsGoogle } from "react-icons/bs"
+import axios from "axios"
 
 type Variant='LOGIN' | 'REGISTER'
 
@@ -43,12 +44,22 @@ export const AuthForm = ()=>{
     })
 
 
-    const onSubmit :SubmitHandler<FieldValues> = (data) =>{
+    const onSubmit :SubmitHandler<FieldValues> = async(data) =>{
          setIsLoading(true)
 
          if(variant==='REGISTER'){
 
             //axios register
+
+        try {
+            const response = await axios.post('/api/register', data);
+            console.log('Registration successful:', response.data);
+        } catch (error) {
+            console.error('Error during registration:', error);
+        } finally {
+            setIsLoading(false);
+        }
+
 
          }
 
