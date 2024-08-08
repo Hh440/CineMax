@@ -3,19 +3,32 @@
 import { Button } from "@/app/component/Button"
 import { Input } from "@/app/component/input/Input"
 import { error } from "console"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import {FieldValues, SubmitHandler, useForm} from 'react-hook-form'
 import { AuthSocialButton } from "./AuthSocialButton"
 import { BsGoogle } from "react-icons/bs"
 import axios from "axios"
+import { signIn, useSession } from "next-auth/react"
+import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 type Variant='LOGIN' | 'REGISTER'
 
 
 export const AuthForm = ()=>{
+    const session = useSession()
+    const router = useRouter()
 
     const [variant,setVariant] = useState<Variant>('LOGIN')
     const [isLoading,setIsLoading] = useState(false)
+
+    useEffect(()=>{
+        if(session.status==='authenticated'){
+            router.push('/display')
+
+        }
+
+    },[session?.status,router])
 
     const toggleVariant = useCallback(()=>{
         if(variant==='LOGIN'){
@@ -52,8 +65,9 @@ export const AuthForm = ()=>{
             //axios register
 
         try {
-            const response = await axios.post('/api/register', data);
-            console.log('Registration successful:', response.data);
+            const response = await axios.post('/api/register', data)
+            .then(()=>signIn('credentials',data))
+            
         } catch (error) {
             console.error('Error during registration:', error);
         } finally {
@@ -66,6 +80,23 @@ export const AuthForm = ()=>{
          if(variant==='LOGIN'){
             //NextAuth SignIn
 
+            signIn('credentials',{
+                ...data,
+                redirect:false
+                
+            })
+            .then((callback)=>{
+                if(callback?.error){
+                    toast.error('Invalid Credentials')
+                }
+
+                if(callback?.ok && !callback?.error){
+                    router.push('/display')
+                    toast.success('Logged in!')
+                }
+            })
+            .finally(()=>setIsLoading(false))
+
          }
     }
 
@@ -75,6 +106,18 @@ export const AuthForm = ()=>{
 
 
         //nextAuth Socail SignIn
+
+        signIn(action,{redirect:false})
+        .then((callback)=>{
+            if(callback?.error){
+                toast.error('Invalid Credentials')
+            }
+
+            if(callback?.ok && callback?.error){
+                toast.success('Logged in!')
+            }
+        })
+        .finally(()=>setIsLoading(false))
 
     }
 
