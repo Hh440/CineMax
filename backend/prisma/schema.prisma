@@ -32,10 +32,11 @@ model Movie {
 model Theatre {
   id          String      @id @default(uuid())
   name        String
-  city        String
-  ticketPrice Float
-  seats       Int
-  image       String
+  city        String?
+  ticketPrice Float?
+  seats       Int?
+  image       String?
+  Address     String?
   showtimes   Showtime[]
   reservations Reservation[]
 }
