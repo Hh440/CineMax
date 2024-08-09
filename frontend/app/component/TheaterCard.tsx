@@ -1,10 +1,10 @@
 
 interface TheaterCardProps{
     name:string,
-    seat:number,
-    image:string,
+    seat?:number,
+    image?:string,
     id:string,
-    ticketPrice:number
+    ticketPrice?:number
     Address:string
 }
 
