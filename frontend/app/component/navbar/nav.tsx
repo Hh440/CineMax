@@ -12,7 +12,7 @@ export const Nav=()=>{
 
                 <nav className="hidden md:flex items-center gap-6">
                     <Link href="/display" className="hover:underline text-xl text-white" prefetch={false}>Theater</Link>
-                    <Link href="#" className="hover:underline text-white text-xl">Movies</Link>
+                    <Link href="/movies" className="hover:underline text-white text-xl">Movies</Link>
                     <Link href="#" className="hover:underline text-white text-xl">Showtimes</Link>
                     <Link href="#" className="hover:underline text-white text-xl">Offer</Link>
                     <Link href="#" className="hover:underline text-white text-xl">Events</Link>
