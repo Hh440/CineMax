@@ -12,7 +12,8 @@ router.post('/add-theatre', async (req, res) => {
             city : body.city,
             ticketPrice : body.ticketPrice,
             seats : body.seats,
-            image : body.image
+            image : body.image,
+            Address:body.Address
         }});
 
         res.status(411).json({msg : "success. Theatre added successfully"});
@@ -37,7 +38,8 @@ router.post('/update-theatre/:id', async (req, res) => {
             city : body.city || existingTheatre.city,
             ticketPrice : body.ticketPrice || existingTheatre.ticketPrice,
             seats : body.seats || existingTheatre.seats,
-            image : body.image || existingTheatre.image
+            image : body.image || existingTheatre.image,
+            Address:body.Address || existingTheatre.Address
         }});
 
         res.status(411).json({msg : "success. Theatre details updated successfully", theatre : theatre});
@@ -67,5 +69,60 @@ router.post('/delete-theatre/:id', async (req, res) => {
         console.log("Error while deleting the Theatre from the database", e);
     }
 });
+
+
+
+router.get('/theaters',async(req,res)=>{
+
+    try{
+        const theaters= await prisma.theatre.findMany({
+            select:{
+                image:true,
+                name:true,
+                seats:true,
+                Address:true,
+                ticketPrice:true
+
+            }
+        })
+
+       return res.json({theaters})
+    }catch(e){
+        console.error("Error fetching Theaters:",e)
+        return res.status(500).json({error:"Internal server error"})
+    }
+})
+
+
+router.get('/:id',async(req,res)=>{
+    const id= req.params.id
+    try{
+        const   theater= await prisma.theatre.findUnique({
+            where:{
+                id:id
+            },select:{
+                image:true,
+                name:true,
+                seats:true,
+                Address:true,
+                ticketPrice:true,
+                showtimes:true,
+                reservations:true
+
+            }
+        })
+
+        if(theater){
+            return res.json({theater})
+        }else{
+            res.status(400).json({error:'Theater not found'})
+        }
+
+    }catch(e){
+        console.error('Error fetching the theater:',e)
+        res.status(500)
+        return res.json({error:'Error fetching the theater data',details:e.message})
+    }
+})
 
 module.exports = router;

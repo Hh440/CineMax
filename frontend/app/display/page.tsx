@@ -1,6 +1,4 @@
 'use client'
-import { signOut } from "next-auth/react"
-import Link from 'next/link'
 import {Nav} from '@/app/component/navbar/nav'
 import { TheaterCard } from "../component/TheaterCard"
 import { useTheaters } from "../hooks"
