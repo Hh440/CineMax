@@ -42,7 +42,7 @@ router.post('/post-showtimes', async (req, res) => {
 
         res.status(201).json(newShowtime);
     } catch (error) {
-        res.status(500).json({ error: 'Error creating showtime' });
+        res.status(500).json({ error: 'Error creating showtime', error : error});
     }
 });
 

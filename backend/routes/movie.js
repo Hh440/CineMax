@@ -58,7 +58,7 @@ router.post('/add-movie', async(req, res) => {
     console.log("Movie addded ", movie);
   }
   catch(e){
-    res.json({error : "Error occured while adding the movie in the database"});
+    res.json({error : "Error occured while adding the movie in the database", error : e});
     console.log("error while adding the film in the database", e);
   }
 });
