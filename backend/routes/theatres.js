@@ -7,6 +7,7 @@ const prisma = require('../prisma');
 router.post('/add-theatre', async (req, res) => {
     try{
         const body = req.body;
+        console.log(body)
         const theatre = await prisma.theatre.create({data : {
             name : body.name,
             city : body.city,
@@ -15,6 +16,7 @@ router.post('/add-theatre', async (req, res) => {
             image : body.image,
             Address:body.Address
         }});
+        console.log(theatre)
 
         res.status(411).json({msg : "success. Theatre added successfully"});
         console.log("success. Theatre added successfully");
@@ -85,6 +87,8 @@ router.get('/theaters',async(req,res)=>{
 
             }
         })
+
+        console.log(theaters)
 
        return res.json({theaters})
     }catch(e){

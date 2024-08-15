@@ -8,6 +8,8 @@ const display = ()=>{
 
   const{loading,theaters}= useTheaters()
 
+
+
     return(
         <div className="flex flex-col min-h-dvh">
             <Nav/>
@@ -18,6 +20,7 @@ const display = ()=>{
                   {
                     theaters.map(theater=>
                       <TheaterCard
+                      key={theater.id}
                       id={theater.id}
                       name={theater.name}
                       seat={theater.seats} 

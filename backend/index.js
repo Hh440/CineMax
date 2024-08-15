@@ -10,7 +10,7 @@ const authRoutes =require('./router/auth')
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth',authRoutes)
-app.use('api/theatre', theatreRoute)
+app.use('/api/theatre', theatreRoute)
 app.use('/api/movie', movieRoute);
 app.use('/api/showtimes', showtimeRoute);
 

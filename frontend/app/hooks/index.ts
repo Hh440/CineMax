@@ -7,7 +7,7 @@ export interface Theater{
     "ticketPrice":number,
     "image":string,
     "Address":string,
-    id:string
+    "id":string
 }
 
 export const useTheaters=()=>{
@@ -15,13 +15,18 @@ export const useTheaters=()=>{
     const [theaters,setTheaters]= useState<Theater[]>([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/api/theater/theaters')
-        .then(response=>{
-            setTheaters(response.data.theater)
-
+        axios
+        .get('http://localhost:5000/api/theatre/theaters')
+        .then(response => {
+          setTheaters(response.data.theaters);
+          console.log(theaters)
+          setLoading(false); 
         })
-    },[])
-
+        .catch(error => {
+          console.error('Error fetching theaters:', error);
+          setLoading(false); 
+        });
+    }, []);
     return{
         theaters,
         loading
