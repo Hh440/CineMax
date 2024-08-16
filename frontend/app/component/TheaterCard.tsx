@@ -1,4 +1,4 @@
-
+import Link from 'next/link'
 interface TheaterCardProps{
     name:string,
     seat?:number,
@@ -17,6 +17,7 @@ export const TheaterCard:React.FC<TheaterCardProps> = ({
     Address
 }) =>{
     return(
+      <Link href={`/theater/${id}`}>
         <div className="rounded-lg bg-background shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
         <img
           src="/placeholder.svg"
@@ -43,6 +44,7 @@ export const TheaterCard:React.FC<TheaterCardProps> = ({
           </div>
         </div>
       </div>
+    </Link>  
 
     )
 }

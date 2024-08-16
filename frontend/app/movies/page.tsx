@@ -1,6 +1,9 @@
 'use client'
 import {Nav} from '@/app/component/navbar/nav'
 import { MovieCard } from './component/MovieCard'
+
+
+
 const Movies=()=>{
     return(
         <div className="flex flex-col min-h-dvh">
