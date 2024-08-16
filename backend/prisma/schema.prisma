@@ -13,6 +13,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model Movie {
   id          String       @id @default(uuid())
   title       String
@@ -27,6 +28,7 @@ model Movie {
   endDate     DateTime?
   showtimes   Showtime[]
   reservations Reservation[]
+  theatres Theatre[]
 }
 
 model Theatre {
@@ -39,6 +41,7 @@ model Theatre {
   Address     String?
   showtimes   Showtime[]
   reservations Reservation[]
+  movies Movie[]
 }
 
 model Showtime {
