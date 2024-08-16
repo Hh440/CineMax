@@ -6,6 +6,7 @@ interface TheaterCardProps{
     id:string,
     ticketPrice?:number
     Address:string
+    
 }
 
 export const TheaterCard:React.FC<TheaterCardProps> = ({
