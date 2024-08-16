@@ -16,15 +16,15 @@ datasource db {
 model Movie {
   id          String       @id @default(uuid())
   title       String
-  image       String
-  language    String
-  genre       String
-  director    String
-  trailer     String
-  description String
-  duration    Int
-  startDate   DateTime
-  endDate     DateTime
+  image       String?
+  language    String?
+  genre       String?
+  director    String?
+  trailer     String?
+  description String?
+  duration    Int?
+  startDate   DateTime?
+  endDate     DateTime?
   showtimes   Showtime[]
   reservations Reservation[]
 }
