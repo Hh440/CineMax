@@ -26,8 +26,6 @@ model Movie {
   duration    Int?         // duration in minutes
   startDate   DateTime?
   endDate     DateTime?
-  startDate     DateTime?
-  endDate       DateTime?
   showtimes     Showtime[]
   reservations  Reservation[]
   theatres      Theatre[]
@@ -41,7 +39,6 @@ model Movie {
 model Theatre {
   id          String       @id @default(uuid())
   name        String
-  name          String
   city          String?
   ticketPrice   Float?
   seats         Int?
@@ -56,6 +53,39 @@ model Theatre {
   updatedAt     DateTime?    // Marked as optional
 }
 
+model Showtime {
+  id          String       @id @default(uuid())
+  ticketPrice Float
+  startDate   DateTime
+  endDate     DateTime
+  movie       Movie     @relation(fields: [movieId], references: [id])
+  movieId     String
+  theatre     Theatre   @relation(fields: [theatreId], references: [id])
+  theatreId   String
+  reservations Reservation[]
+}
+
+model Reservation {
+  id          String       @id @default(uuid())
+  date        DateTime
+  startAt     DateTime
+  seats       Int
+  orderId     String
+  ticketPrice Float
+  total       Float
+  movie       Movie     @relation(fields: [movieId], references: [id])
+  movieId     String
+  theatre     Theatre   @relation(fields: [theatreId], references: [id])
+  theatreId   String
+  showtime    Showtime  @relation(fields: [showtimeId], references: [id])
+  showtimeId  String
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+  name        String
+  phone       String
+}
+
+
 model User {
   id          String       @id @default(uuid())
   name        String
@@ -64,7 +94,7 @@ model User {
   phone       String?
   bookings    Booking[]
   role        Role         @default(CUSTOMER)
-
+  reservations Reservation[]
   accounts    Account[]
 
   createdAt   DateTime     @default(now())
