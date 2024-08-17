@@ -26,10 +26,8 @@ model Movie {
   duration    Int?         // duration in minutes
   startDate   DateTime?
   endDate     DateTime?
-  startDate     DateTime?
-  endDate       DateTime?
-  showtimes     Showtime[]
-  reservations  Reservation[]
+
+
   theatres      Theatre[]
   trailerUrl    String?
   screenings    Screening[]
@@ -41,14 +39,11 @@ model Movie {
 model Theatre {
   id          String       @id @default(uuid())
   name        String
-  name          String
   city          String?
   ticketPrice   Float?
   seats         Int?
   image         String?
   Address       String?
-  showtimes     Showtime[]
-  reservations  Reservation[]
   movies        Movie[]
   address       String?      // Marked as optional
   screenings    Screening[]
