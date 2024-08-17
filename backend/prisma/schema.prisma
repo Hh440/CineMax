@@ -13,6 +13,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model Movie {
   id          String       @id @default(uuid())
   title       String
@@ -25,21 +26,34 @@ model Movie {
   duration    Int?         // duration in minutes
   startDate   DateTime?
   endDate     DateTime?
-  trailerUrl  String?
-  screenings  Screening[]
+  startDate     DateTime?
+  endDate       DateTime?
+  showtimes     Showtime[]
+  reservations  Reservation[]
+  theatres      Theatre[]
+  trailerUrl    String?
+  screenings    Screening[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime?    // Marked as optional
 
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime?    // Marked as optional
 }
 
 model Theatre {
   id          String       @id @default(uuid())
   name        String
-  address     String?      // Marked as optional
-  screenings  Screening[]
-
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime?    // Marked as optional
+  name          String
+  city          String?
+  ticketPrice   Float?
+  seats         Int?
+  image         String?
+  Address       String?
+  showtimes     Showtime[]
+  reservations  Reservation[]
+  movies        Movie[]
+  address       String?      // Marked as optional
+  screenings    Screening[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime?    // Marked as optional
 }
 
 model User {
