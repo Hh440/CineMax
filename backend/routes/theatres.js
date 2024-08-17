@@ -18,7 +18,7 @@ router.post('/add-theatre', async (req, res) => {
         }});
         console.log(theatre)
 
-        res.status(411).json({msg : "success. Theatre added successfully"});
+        res.status(200).json({msg : "success. Theatre added successfully", id : theatre.id});
         console.log("success. Theatre added successfully");
     }
     catch(e)
@@ -74,7 +74,7 @@ router.post('/delete-theatre/:id', async (req, res) => {
 
 
 
-router.get('/theaters',async(req,res)=>{
+router.get('/theatres',async(req,res)=>{
 
     try{
         const theaters= await prisma.theatre.findMany({
