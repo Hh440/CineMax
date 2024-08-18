@@ -9,11 +9,11 @@ const Movie=()=>{
     const {id}=useParams<{ id: string }>()
     const {loading,movie}= useMovie({
         id:id||""
-    })
+    })  
 
     return (
         <div>
-            <MovieDeatil/>
+            <MovieDeatil movie={movie}/>
         </div>
     )
 }

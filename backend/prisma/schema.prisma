@@ -21,6 +21,7 @@ model Movie {
   description String?
   language    String?
   trailer     String?
+  trailerUrl    String?
   genre       String[]
   director    String?
   duration    Int?         // duration in minutes
@@ -29,7 +30,6 @@ model Movie {
   showtimes     Showtime[]
   reservations  Reservation[]
   theatres      Theatre[]
-  trailerUrl    String?
   screenings    Screening[]
   createdAt     DateTime     @default(now())
   updatedAt     DateTime?    // Marked as optional

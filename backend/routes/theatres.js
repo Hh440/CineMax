@@ -74,11 +74,12 @@ router.post('/delete-theatre/:id', async (req, res) => {
 
 
 
-router.get('/theatres',async(req,res)=>{
+router.get('/theaters',async(req,res)=>{
 
     try{
         const theaters= await prisma.theatre.findMany({
             select:{
+                id:true,
                 image:true,
                 name:true,
                 seats:true,
@@ -105,14 +106,12 @@ router.get('/:id',async(req,res)=>{
             where:{
                 id:id
             },select:{
+                id:true,
                 image:true,
                 name:true,
                 seats:true,
                 Address:true,
                 ticketPrice:true,
-                showtimes:true,
-                reservations:true
-
             }
         })
 

@@ -8,7 +8,8 @@ export interface Theater{
     "ticketPrice":number,
     "image":string,
     "Address":string,
-    "id":string
+    "id":string,
+    "movies":Movies[]
 }
 
 export interface Movies{
@@ -16,12 +17,15 @@ export interface Movies{
   "title":string,
   "image":string,
   "language":string,
-  "genere":string,
+  "genre":string[],
   "director":string,
+  "trailer":string,
+  "trailerUrl":string
   "description":string,
   "duration":number,
-  "startDate":DateTime
-  "showtime":DateTime
+  "startDate":Date,
+  "endDate":Date
+  "theatres":Theater[]
 }
 
 
@@ -34,6 +38,7 @@ export const useTheater = ({id}:{id:string})=>{
     axios.get(`http://localhost:5000/api/theater/${id}`)
     .then(response=>{
       setTheater(response.data.theater)
+      console.log(response.data.theater)
       setLoading(false)
     })
     .catch(e=>{
@@ -60,7 +65,7 @@ export const useTheaters=()=>{
 
     useEffect(()=>{
         axios
-        .get('http://localhost:5000/api/theatre/theaters')
+        .get('http://localhost:5000/api/theater/theaters')
         .then(response => {
           setTheaters(response.data.theaters);
           console.log(theaters)
@@ -85,7 +90,13 @@ export const useMovie = ({id}:{id:string})=>{
   useEffect(()=>{
     axios.get(`http://localhost:5000/api/movie/${id}`)
     .then(response=>{
-      setMovie(response.data.movie)
+      const fetchedMovie = response.data.movie;
+      setMovie({
+        ...fetchedMovie,
+          startDate: fetchedMovie.startDate ? new Date(fetchedMovie.startDate) : undefined,
+          endDate: fetchedMovie.endDate ? new Date(fetchedMovie.endDate) : undefined,
+          showtime: fetchedMovie.showtime ? new Date(fetchedMovie.showtime) : undefined,
+    })
       setLoading(false)
     })
     .catch(e=>{
@@ -116,13 +127,13 @@ export const useMovies = ()=>{
   const [movies,setMovies] = useState<Movies[]>([])
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/appi/movie/movies')
+    axios.get('http://localhost:5000/api/movie/movies')
     .then(response=>{
-      setMovies(response.data.moveis)
+      setMovies(response.data.movies)
       setLoading(false)
     })
     .catch(error => {
-      console.error('Error fetching theaters:', error);
+      console.error('Error fetching Movies:', error);
       setLoading(false); 
     });
   },[])
