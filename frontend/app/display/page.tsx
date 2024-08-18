@@ -16,25 +16,19 @@ const display = ()=>{
 
             <main className="flex-1 py-12 px-4 md:px-6">
                 <h1 className="text-3xl font-bold mb-8 text-[#007bff]">Theater</h1>
-                <div className="flex justify-center">
-                  {
-                    theaters.map(theater=>
-                      <TheaterCard
-                      key={theater.id}
-                      id={theater.id}
-                      name={theater.name}
-                      seat={theater.seats} 
-                      ticketPrice={theater.ticketPrice}
-                      Address={theater.Address}
-                      image={theater.image}
-
-                      />
-                    )
-                  }
-
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {theaters.map(theater => (
+                        <TheaterCard
+                            key={theater.id}
+                            id={theater.id}
+                            name={theater.name}
+                            seat={theater.seats}
+                            ticketPrice={theater.ticketPrice}
+                            Address={theater.Address}
+                            image={theater.image}
+                        />
+                    ))}
                 </div>
-                
-
             </main>
             
         </div>
