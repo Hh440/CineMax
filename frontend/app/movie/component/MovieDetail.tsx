@@ -1,6 +1,7 @@
 'use client'
 
 import { Movies } from "@/app/hooks";
+import { useShowtime } from "@/app/hooks";
 
 interface MovieDetailProps {
   movie: Movies |undefined;
@@ -17,10 +18,12 @@ const extractVideoId = (url: string | null) => {
 };
 
 const MovieDetail = ({movie}:MovieDetailProps) => {
-    
+    const { loading: showtimesLoading, showtimes } = useShowtime({ id: movie?.id || '' });
+
+
 
    
-    if (!movie) return <p>Movie not found</p>;
+    if (!movie) return <div className="max-w-4xl mx-auto p-6 sm:p-8">Loading...</div>;
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -70,16 +73,22 @@ const MovieDetail = ({movie}:MovieDetailProps) => {
             <div className="mt-8">
                 <h2 className="text-2xl font-semibold mb-4">Available in Theaters</h2>
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {movie?.theatres?.length > 0 ? (
-                        movie.theatres.map(theatre => (
-                            <div key={theatre.id} className="bg-white shadow rounded-lg p-4">
-                                <h3 className="font-semibold mb-2">{theatre.name}</h3>
-                                <p className="text-sm text-gray-600">{theatre.Address}</p>
-                            </div>
-                            ))
-                ) : (
-                    <p>No theaters available.</p>
-                )}
+                {showtimesLoading ? (
+                    <p>Loading showtimes...</p>
+                    ) : showtimes !== null && showtimes !== undefined && showtimes.length > 0 ? (
+                        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            {showtimes.map(showtime => (
+                        <div key={showtime.id} className="bg-white shadow rounded-lg p-4">
+                            <p>Showtime ID: {showtime.theatre.name}</p>
+                                <p>Ticket Price: {showtime.ticketPrice}</p>
+                                <p>Start Date: {new Date(showtime.startDate).toLocaleString()}</p>
+                        <p>End Date: {new Date(showtime.endDate).toLocaleString()}</p>
+                        </div>
+                ))}
+    </div>
+) : (
+    <p>No showtimes available.</p>
+)}
                 </div>
             </div>
         </div>

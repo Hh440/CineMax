@@ -29,6 +29,18 @@ export interface Movies{
 }
 
 
+export interface Showtime {
+  "id": string;
+  "ticketPrice": number;
+  "startDate": Date;
+  "endDate": Date;
+  "startTime":DateTime
+  "endTIme":DateTime
+  "theatre": Theater;
+  "movie": Movies;
+}
+
+
 export const useTheater = ({id}:{id:string})=>{
   const [loading,setLoading]= useState(true)
   const [theater,setTheater]= useState<Theater|undefined>(undefined)
@@ -143,3 +155,51 @@ export const useMovies = ()=>{
     loading
   }
 }
+
+
+
+export const useShowtime = ({ id }: { id: string }) => {
+  const [loading, setLoading] = useState(true);
+  const [showtimes, setShowtimes] = useState<Showtime[]>([]);
+
+  useEffect(() => {
+      axios.get(`http://localhost:5000/api/showtimes/${id}` )
+          .then(response => {
+            
+              setShowtimes(response.data.showtimes);
+              setLoading(false);
+          })
+          .catch(error => {
+              console.error('Error fetching showtimes:', error);
+              setLoading(false);
+          });
+  }, [id]);
+
+  return {
+      showtimes,
+      loading
+  };
+};
+
+
+export const useShowTheatertime = ({ theaterId }: { theaterId: string }) => {
+  const [loading, setLoading] = useState(true);
+  const [showtimes, setShowtimes] = useState<Showtime[]>([]);
+  console.log(theaterId)
+  useEffect(() => {
+      axios.get(`http://localhost:5000/api/showtimes/${theaterId}` )
+          .then(response => {
+              setShowtimes(response.data.showtimes);
+              setLoading(false);
+          })
+          .catch(error => {
+              console.error('Error fetching showtimes:', error);
+              setLoading(false);
+          });
+  }, [theaterId]);
+
+  return {
+      showtimes,
+      loading
+  };
+};
