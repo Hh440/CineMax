@@ -24,7 +24,7 @@ model Movie {
   trailerUrl    String?
   genre       String
   director    String?
-  duration    Int?         // duration in minutes
+  duration    String?         // duration in minutes
   startDate   DateTime?
   endDate     DateTime?
   showtimes     Showtime[]

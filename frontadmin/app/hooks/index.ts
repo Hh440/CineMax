@@ -26,3 +26,29 @@ export const useTheatre = ({id} : {id : string}) => {
         theatre
     }
 }
+
+export const useMovie = ({id} : {id: string}) => {
+    const [loading,setLoading]= useState(true)
+    const [movie,setMovie]= useState(undefined)
+
+    useEffect(() => {
+        if (id) {
+            try {
+              axios.get(`http://localhost:5000/api/movie/${id}`)
+              .then(response => {
+                setMovie(response.data.movie);
+              setLoading(false);
+              }) 
+            } catch (error) {
+              console.error("Error fetching movie details:", error);
+              setLoading(false);
+            }
+          };
+
+      }, [id]);
+
+    return {
+        loading,
+        movie
+    }
+}

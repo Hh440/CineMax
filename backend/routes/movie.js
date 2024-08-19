@@ -147,18 +147,6 @@ router.get('/:id',async(req,res)=>{
               description:true,
               startDate:true,
               endDate:true,
-              theatres: {
-                select: {
-                  id: true,
-                  name: true,
-                  city: true,
-                  ticketPrice: true,
-                  seats: true,
-                  image: true,
-                  address: true,
-                }
-              } 
-              
           }
       })
 
