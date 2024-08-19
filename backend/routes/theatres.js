@@ -102,23 +102,30 @@ router.get('/theaters',async(req,res)=>{
 router.get('/:id',async(req,res)=>{
     const id= req.params.id
     try{
-        const   theater= await prisma.theatre.findUnique({
+        const theatre= await prisma.theatre.findUnique({
             where:{
                 id:id
             },select:{
                 id:true,
-                image:true,
                 name:true,
+                city:true,
+                ticketPrice:true,
+                image:true,
                 seats:true,
                 Address:true,
-                ticketPrice:true,
+                showtimes:true,
+                reservations:true,
+                movies:true,
+                screenings:true,
+                createdAt:true,
+                updatedAt:true
             }
         })
 
-        if(theater){
-            return res.json({theater})
+        if(theatre){
+            return res.json({theatre : theatre})
         }else{
-            res.status(400).json({error:'Theater not found'})
+            res.status(400).json({error:'Theatre not found'})
         }
 
     }catch(e){

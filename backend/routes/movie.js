@@ -6,22 +6,6 @@ const router = express.Router();
 const prisma = require('../prisma');
 
 
-class Movie {
-  constructor(title = "", image = "", language = "", genre = "", director = "", trailer = "", description = "", duration = "", startDate = "", endDate = "") {
-    this.title = title;
-    this.image = image;
-    this.language = language;
-    this.genre = genre;
-    this.director = director;
-    this.trailer = trailer;
-    this.description = description;
-    this.duration = duration;
-    this.startDate = startDate;
-    this.endDate = endDate;
-  }
-}
-
-
 router.get('/check-connection', async (req, res) => {
   try {
     await prisma.$connect();
@@ -29,7 +13,7 @@ router.get('/check-connection', async (req, res) => {
   }
   catch(err) {
     console.log("Error occured while connecting to the database ", err );
-    res.json( { error : " error occured while connecting to the database  ", details : e.message });
+    res.json( { error : " error occured while connecting to the database  ", details : err.message });
   }
 })
 
@@ -41,11 +25,11 @@ router.post('/add-movie', async(req, res) => {
       data : {
         title : body.title,
         image : body.image,
+        description : body.description,
         language : body.language,
+        trailerUrl : body.trailerUrl,
         genre : body.genre,
         director : body.director,
-        trailerUrl : body.trailer,
-        description : body.description,
         duration : body.duration,
         startDate : body.startDate || new Date(),
         endDate : body.endDate || new Date()
