@@ -42,6 +42,7 @@ model Theatre {
   city          String?
   ticketPrice   Float?
   seats         Int?
+  showsavailable Int?
   image         String?
   Address       String?
   showtimes     Showtime[]

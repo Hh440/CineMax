@@ -12,6 +12,8 @@ const Movie=()=>{
     })  
 
     return (
+
+      
         <div>
             <MovieDeatil movie={movie}/>
         </div>
