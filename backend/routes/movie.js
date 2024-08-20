@@ -37,8 +37,8 @@ router.post('/add-movie', async(req, res) => {
         //will showtime and reservations need to updated on their own ???
       }
     })
-
-    res.json({message : "Movie added in the database", data : movie});
+    const id = movie.id;
+    res.json({message : "Movie added in the database", data : movie, id : id});
     console.log("Movie addded ", movie);
   }
   catch(e){

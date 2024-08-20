@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-
+import { useRouter } from "next/navigation";
 const Home = () => {
+  const { push } = useRouter();
   const [formData, setFormData] = useState({
     title: "",
     image: "",
@@ -31,6 +32,10 @@ const Home = () => {
       );
       console.log(response.data);
       alert("Movie added successfully!");
+      const id = response.data.id;
+      console.log("id is ", id)
+      console.log("Movie created successfully");
+      push(`/movie/get/${id}`);
     } catch (error) {
       console.error("Error adding movie:", error);
       alert("Failed to add movie.");
