@@ -12,6 +12,7 @@
     "@tailwindcss/forms": "^0.5.7",
     "axios": "^1.7.3",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.428.0",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "react": "^18",

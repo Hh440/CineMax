@@ -30,7 +30,6 @@ model Movie {
   showtimes     Showtime[]
   reservations  Reservation[]
   theatres      Theatre[]
-  screenings    Screening[]
   createdAt     DateTime     @default(now())
   updatedAt     DateTime?    // Marked as optional
 
@@ -49,7 +48,7 @@ model Theatre {
   reservations  Reservation[]
   movies        Movie[]
   address       String?      // Marked as optional
-  screenings    Screening[]
+ 
   createdAt     DateTime     @default(now())
   updatedAt     DateTime?    // Marked as optional
 }
@@ -93,7 +92,7 @@ model User {
   email       String       @unique
   password    String
   phone       String?
-  bookings    Booking[]
+  
   role        Role         @default(CUSTOMER)
   reservations Reservation[]
   accounts    Account[]
@@ -102,33 +101,7 @@ model User {
   updatedAt   DateTime?    // Marked as optional
 }
 
-model Screening {
-  id          String       @id @default(uuid())
-  movieId     String
-  theaterId   String
-  startTime   DateTime
-  endTime     DateTime
 
-  movie       Movie        @relation(fields: [movieId], references: [id])
-  theater     Theatre      @relation(fields: [theaterId], references: [id])
-  bookings    Booking[]
-
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-}
-
-model Booking {
-  id          String       @id @default(uuid())
-  screeningId String
-  userId      String       // Assuming you have a User model
-  seats       Int
-
-  screening   Screening    @relation(fields: [screeningId], references: [id])
-  user        User         @relation(fields: [userId], references: [id])
-
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-}
 
 
 
