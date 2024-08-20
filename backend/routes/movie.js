@@ -110,8 +110,8 @@ router.get('/movies',async(req,res)=>{
             id:true,
             image:true,
             title:true,
-            language:true
-
+            language:true,
+            description : true
         }
     })
 

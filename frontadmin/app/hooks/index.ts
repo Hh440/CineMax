@@ -52,3 +52,29 @@ export const useMovie = ({id} : {id: string}) => {
         movie
     }
 }
+
+
+export const useAllMovie = () => {
+  const [loading,setLoading]= useState(true)
+  const [movies,setMovies]= useState(undefined)
+
+  useEffect(() => {
+          try {
+            axios.get(`http://localhost:5000/api/movie/movies`)
+            .then(response => {
+              setMovies(response.data.movies);
+              console.log(response.data.movies);
+              setLoading(false);
+            }) 
+          } catch (error) {
+            console.error("Error fetching movies: ", error);
+            setLoading(false);
+          }
+
+    }, []);
+
+  return {
+      loading,
+      movies
+  }
+}
