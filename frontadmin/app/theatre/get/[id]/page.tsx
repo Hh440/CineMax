@@ -1,8 +1,9 @@
 "use client"
 
-
 import { useTheatre } from '@/app/hooks';
 import { useParams } from "next/navigation"
+import { useState } from 'react';
+
 
 export default function Home() {
   const {id}=useParams<{ id: string }>()
@@ -10,6 +11,26 @@ export default function Home() {
       id:id||""
   })  
   console.log(theatre);
+
+  const [movieId, setMovieId] = useState('');
+
+  const addMovie = async () => {
+    try {
+      const res = await fetch(`http://localhost:5000/api/theatre/${id}/add-movie`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ movieId }),
+      });
+
+      const data = await res.json();
+      console.log("Movie added:", data);
+      // Optionally, refresh theatre details after adding a movie
+    } catch (error) {
+      console.error("Error adding movie:", error);
+    }
+  };
   
   if (loading) return <div className="text-center py-20 text-lg">Loading...</div>;
   return (
@@ -50,8 +71,26 @@ export default function Home() {
             >
               Watch Trailer
             </a>
+
           </div>
+          <div className="mt-6">
+              <h2 className="text-xl font-bold mb-4">Add Movie to Theatre</h2>
+              <input
+                type="text"
+                placeholder="Enter Movie ID"
+                value={movieId}
+                onChange={(e) => setMovieId(e.target.value)}
+                className="border rounded-lg p-2 mb-4 w-full"
+              />
+              <button
+                onClick={addMovie}
+                className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+              >
+                Add Movie
+              </button>
+            </div>
         </div>
+        
       </div>
     </div>
   );

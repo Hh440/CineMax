@@ -134,6 +134,29 @@ router.get('/:id',async(req,res)=>{
         res.status(500)
         return res.json({error:'Error fetching the theater data',details:e.message})
     }
-})
+});
+
+router.post('/:id/add-movie', async (req, res) => {
+    const { id } = req.params;
+    const { movieId } = req.body;
+  
+    try {
+      const theatre = await prisma.theatre.update({
+        where: { id },
+        data: {
+          movies: {
+            connect: { id: movieId },
+          },
+        },
+        include: { movies: true },
+      });
+  
+      res.json(theatre);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Failed to add movie to theatre" });
+    }
+  });
+  
 
 module.exports = router;
