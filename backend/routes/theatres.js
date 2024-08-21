@@ -74,7 +74,7 @@ router.post('/delete-theatre/:id', async (req, res) => {
 
 
 
-router.get('/theaters',async(req,res)=>{
+router.get('/theatres',async(req,res)=>{
 
     try{
         const theaters= await prisma.theatre.findMany({
@@ -123,6 +123,7 @@ router.get('/:id',async(req,res)=>{
         })
 
         if(theatre){
+            console.log(theatre)
             return res.json({theatre : theatre})
         }else{
             res.status(400).json({error:'Theatre not found'})

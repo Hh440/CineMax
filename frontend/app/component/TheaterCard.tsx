@@ -21,7 +21,7 @@ export const TheaterCard:React.FC<TheaterCardProps> = ({
       <Link href={`/theater/${id}`}>
         <div className="rounded-lg bg-background shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
         <img
-          src="/placeholder.svg"
+          src={`${image}`}
           alt="Theater 1"
           width="600"
           height="300"

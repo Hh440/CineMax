@@ -77,7 +77,7 @@ router.post('/update-movie-details/:id', async (req, res)=> {
   }
   catch(e){
     res.json({error : "Error occured while updating the movie details"});
-    console.log("error while updating the movie details in the database", error);
+    console.log("error while updating the movie details in the database", e);
   }
 });
 

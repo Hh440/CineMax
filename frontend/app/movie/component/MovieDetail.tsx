@@ -2,7 +2,7 @@
 
 import { Movies } from "@/app/hooks";
 import { useShowtime } from "@/app/hooks";
-
+import { useParams, useRouter } from "next/navigation";
 interface MovieDetailProps {
   movie: Movies |undefined;
 }
@@ -19,6 +19,16 @@ const extractVideoId = (url: string | null) => {
 
 const MovieDetail = ({movie}:MovieDetailProps) => {
     const { loading: showtimesLoading, showtimes } = useShowtime({ id: movie?.id || '' });
+
+    const router= useRouter()
+
+    const {id} = useParams()
+
+
+    const handleTheatre = ()=>{
+        router.push(`/selection/${id}`)
+
+    }
 
 
 
@@ -66,7 +76,10 @@ const MovieDetail = ({movie}:MovieDetailProps) => {
                             alt={movie.title}
                             className="w-full h-auto rounded-lg mb-4"
                         />
-                        <button className="w-full bg-blue-500 text-white py-2 rounded-lg">Book Tickets</button>
+                        <button className="w-full bg-blue-500 text-white py-2 rounded-lg"
+                        onClick={handleTheatre}
+                        
+                        >Book Tickets</button>
                     </div>
                 </div>
             </div>
@@ -74,21 +87,29 @@ const MovieDetail = ({movie}:MovieDetailProps) => {
                 <h2 className="text-2xl font-semibold mb-4">Available in Theaters</h2>
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {showtimesLoading ? (
-                    <p>Loading showtimes...</p>
+                <p className="text-center text-gray-500">Loading showtimes...</p>
                     ) : showtimes !== null && showtimes !== undefined && showtimes.length > 0 ? (
-                        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            {showtimes.map(showtime => (
-                        <div key={showtime.id} className="bg-white shadow rounded-lg p-4">
-                            <p>Showtime ID: {showtime.theatre.name}</p>
-                                <p>Ticket Price: {showtime.ticketPrice}</p>
-                                <p>Start Date: {new Date(showtime.startDate).toLocaleString()}</p>
-                        <p>End Date: {new Date(showtime.endDate).toLocaleString()}</p>
-                        </div>
-                ))}
-    </div>
-) : (
-    <p>No showtimes available.</p>
-)}
+                        <div className="grid ">
+                        {showtimes.map(showtime => (
+                <div key={showtime.id} className="bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between w-full hover:shadow-xl transition-shadow duration-200">
+                    <div className="mb-4">
+                        <p className="font-bold text-xl text-gray-800">{showtime.theatre.name}</p>
+          
+                    </div>
+                    <div className="mb-4">
+                        <p className="text-lg">Ticket Price: <span className="font-semibold text-green-600">${showtime.ticketPrice}</span></p>
+                    </div>
+                    <div className="text-sm text-gray-500">
+                        <p>Start Date: <span className="font-medium text-gray-700">{new Date(showtime.startDate).toLocaleString()}</span></p>
+                        <p>End Date: <span className="font-medium text-gray-700">{new Date(showtime.endDate).toLocaleString()}</span></p>
+                    </div>
+                    <button className="mt-4 bg-blue-500 text-white py-2 rounded-lg" >Book Now</button>
+            </div>
+            ))}
+        </div>
+        ) : (
+    <p className="text-center text-gray-500">No showtimes available.</p>
+            )}
                 </div>
             </div>
         </div>

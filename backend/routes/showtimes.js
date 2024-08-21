@@ -71,8 +71,8 @@ router.post('/post-showtimes', async (req, res) => {
                 ticketPrice,
                 startDate: new Date(startDate),
                 endDate: new Date(endDate),
-                movieId: { connect: { id: movieId } },
-                theatreId: { connect: { id: theatreId } },
+                movie: { connect: { id: movieId    }, },
+                theatre: { connect: { id: theatreId }, },
             },
         });
         res.status(201).json(newShowtime);
