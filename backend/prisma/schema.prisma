@@ -22,7 +22,7 @@ model Movie {
   language    String?
   trailer     String?
   trailerUrl    String?
-  genre       String
+  genre       String[]
   director    String?
   duration    String?         // duration in minutes
   startDate   DateTime?
