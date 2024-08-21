@@ -47,7 +47,7 @@ export const useTheater = ({id}:{id:string})=>{
 
   useEffect(()=>{
 
-    axios.get(`http://localhost:5000/api/theater/${id}`)
+    axios.get(`http://localhost:5000/api/theatre/${id}`)
     .then(response=>{
       setTheater(response.data.theater)
       console.log(response.data.theater)
@@ -77,7 +77,7 @@ export const useTheaters=()=>{
 
     useEffect(()=>{
         axios
-        .get('http://localhost:5000/api/theater/theaters')
+        .get('http://localhost:5000/api/theatre/theatres')
         .then(response => {
           setTheaters(response.data.theaters);
           console.log(theaters)
