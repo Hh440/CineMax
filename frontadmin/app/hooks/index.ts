@@ -1,5 +1,46 @@
 import axios from "axios";
 import { lazy, use, useEffect, useState } from "react";
+import { DateTime } from "next-auth/providers/kakao";
+
+
+export interface Theater{
+  "name":string,
+  "seats":number,
+  "ticketPrice":number,
+  "image":string,
+  "Address":string,
+  "id":string,
+  "movies":Movies[]
+}
+
+export interface Movies{
+"id":string,
+"title":string,
+"image":string,
+"language":string,
+"genre":string[],
+"director":string,
+"trailer":string,
+"trailerUrl":string
+"description":string,
+"duration":number,
+"startDate":Date,
+"endDate":Date
+"theatres":Theater[]
+}
+
+
+export interface Showtime {
+"id": string;
+"ticketPrice": number;
+"startDate": Date;
+"endDate": Date;
+"startTime":DateTime
+"endTIme":DateTime
+"theatre": Theater;
+"movie": Movies;
+}
+
 
 
 export const useTheatre = ({id} : {id : string}) => {
@@ -78,3 +119,26 @@ export const useAllMovie = () => {
       movies
   }
 }
+
+export const useShowtime = ({ id }: { id: string }) => {
+  const [loading, setLoading] = useState(true);
+  const [showtimes, setShowtimes] = useState<Showtime[]>([]);
+
+  useEffect(() => {
+      axios.get(`http://localhost:5000/api/showtimes/${id}` )
+          .then(response => {
+            
+              setShowtimes(response.data.showtimes);
+              setLoading(false);
+          })
+          .catch(error => {
+              console.error('Error fetching showtimes:', error);
+              setLoading(false);
+          });
+  }, [id]);
+
+  return {
+      showtimes,
+      loading
+  };
+};
