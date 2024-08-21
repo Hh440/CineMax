@@ -1,6 +1,5 @@
 
 const express = require('express')
-
 const router = express.Router();
 
 const prisma = require('../prisma');
@@ -163,5 +162,26 @@ router.get('/:id',async(req,res)=>{
   }
 
 })
+
+router.post('/:movieId/showtimes', async (req, res) => {
+  const { movieId } = req.params;
+  const { startDate, endDate, theatreId, ticketPrice } = req.body;
+
+  try {
+    const newShowtime = await prisma.showtime.create({
+      data: {
+        startDate: new Date(startDate),
+        endDate: new Date(endDate),
+        ticketPrice,
+        movie: { connect: { id: movieId } },
+        theatre: { connect: { id: theatreId } },
+      },
+    });
+    res.status(201).json(newShowtime);
+  } catch (error) {
+    console.error("Error creating showtime:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 module.exports = router;
