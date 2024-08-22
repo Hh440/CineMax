@@ -40,7 +40,7 @@ export default function Home() {
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-4xl transform transition duration-500 hover:scale-105">
         <div className="flex flex-col md:flex-row items-center">
           <img
-            src={theatre.image}
+            src={theatre.image === '' ? "https://t3.ftcdn.net/jpg/03/74/28/58/240_F_374285858_KzJ88FysqJ79AhyNPW2lqnBtsRTokuav.jpg" : theatre.image}
             alt={theatre.name}
             className="w-full md:w-1/2 h-auto rounded-lg object-cover mb-6 md:mb-0 md:mr-6 shadow-lg"
           />
