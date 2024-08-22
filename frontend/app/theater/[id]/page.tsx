@@ -7,12 +7,12 @@ import { useTheater } from "@/app/hooks"
 const Theater = ()=>{
 
     const {id} = useParams<{id:string}>()
-    const {loading,theater}=useTheater({
+    const {loading,theatre}=useTheater({
         id:id||""
     }); 
     return (
         <div>
-            <TheaterDetail theater={theater}/>
+            <TheaterDetail theatre={theatre}/>
             
         </div>
     )

@@ -1,23 +1,55 @@
 'use client'
 
 import Link from 'next/link'
+import { ClapperboardIcon, UserIcon, GlobeIcon, HomeIcon, BuildingIcon, ClockIcon, CalendarIcon, TicketIcon } from 'lucide-react'
 
 export const Nav=()=>{
     return (
-        <header className="bg-[#007bff] text-white py-4 px-6 flex items-center justify-between">
-                <Link href='#' className="flex items-center gap-2" prefetch={false}>
-                    <FilmIcon className="w-c6 h-6 fill-[#87ceeb]"/>
-                    <span className="text-3xl font-bold">Maxer</span>
-                </Link>
-
-                <nav className="hidden md:flex items-center gap-6">
-                    <Link href="/display" className="hover:underline text-xl text-white" prefetch={false}>Theater</Link>
-                    <Link href="/movies" className="hover:underline text-white text-xl">Movies</Link>
-                    <Link href="#" className="hover:underline text-white text-xl">Showtimes</Link>
-                    <Link href="#" className="hover:underline text-white text-xl">Offer</Link>
-                    <Link href="#" className="hover:underline text-white text-xl">Events</Link>
-                </nav>
-            </header>
+       
+      <nav className="bg-white shadow-md py-8 px-6 mb-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex justify-between items-center mb-4">
+            <div className="text-2xl font-bold text-teal-700 flex items-center gap-2">
+              <ClapperboardIcon className="w-8 h-8" />
+              <span>CineMax</span>
+            </div>
+          </div>
+          <ul className="flex flex-wrap justify-center space-x-4 sm:space-x-6">
+           
+            <li>
+              <a href={'/display'} className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
+                <BuildingIcon className="w-4 h-4" />
+                <span>Theaters</span>
+              </a>
+            </li>
+            <li>
+              <a href={'/movies'} className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
+                <FilmIcon className="w-4 h-4" />
+                <span>Movies</span>
+              </a>
+            </li>
+            <li>
+              <a href={'/showtime'} className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
+                <ClockIcon className="w-4 h-4" />
+                <span>Showtimes</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
+                <CalendarIcon className="w-4 h-4" />
+                <span>Events</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
+                <TicketIcon className="w-4 h-4" />
+                <span>Coupons</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+          
     )
 }
 

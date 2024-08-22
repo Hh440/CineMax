@@ -4,6 +4,7 @@ import { TicketIcon } from "lucide-react";
 import { useShowtime } from "@/app/hooks";
 import { Movies } from "@/app/hooks";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 interface MovieDetailProps {
   movie: Movies | undefined;
@@ -31,6 +32,7 @@ const Selection = ({ movie }: MovieDetailProps) => {
           ) : showtimes !== null && showtimes !== undefined && showtimes.length > 0 ? (
             <div className="space-y-6">
               {showtimes.map(showtime => (
+                <Link href={`/payment/${movieId}`}>
                 <div
                   key={showtime.id}
                   className="w-full bg-white shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out rounded-lg overflow-hidden border-sky-100 border p-6"
@@ -46,6 +48,7 @@ const Selection = ({ movie }: MovieDetailProps) => {
                     </p>
                   </div>
                 </div>
+                </Link>
               ))}
             </div>
           ) : (
