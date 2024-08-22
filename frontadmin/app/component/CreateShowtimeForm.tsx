@@ -1,6 +1,5 @@
-// components/CreateShowtimeForm.tsx
-
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function CreateShowtimeForm({ movieId, theatreId, onShowtimeCreated }) {
   const [showtimeData, setShowtimeData] = useState({
@@ -10,25 +9,20 @@ export default function CreateShowtimeForm({ movieId, theatreId, onShowtimeCreat
   });
 
   const createShowtime = async () => {
+    console.log("Sending showtime data:", showtimeData);
+
     try {
-      const res = await fetch(`http://localhost:5000/api/movie/${movieId}/showtimes`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          startDate: showtimeData.startDate,
-          endDate: showtimeData.endDate,
-          theatreId,
-          ticketPrice: parseFloat(showtimeData.ticketPrice),
-        }),
+      const response = await axios.post(`http://localhost:5000/api/movie/${movieId}/showtimes`, {
+        startDate: showtimeData.startDate,
+        endDate: showtimeData.endDate,
+        theatreId,
+        ticketPrice: parseFloat(showtimeData.ticketPrice),
       });
 
-      const data = await res.json();
-      console.log("Showtime created:", data);
+      console.log("Showtime created:", response.data);
       onShowtimeCreated();  // Call the callback function to refresh data or show a success message
     } catch (error) {
-      console.error("Error creating showtime:", error);
+      console.error("Error creating showtime:", error.response?.data || error.message);
     }
   };
 
@@ -39,21 +33,30 @@ export default function CreateShowtimeForm({ movieId, theatreId, onShowtimeCreat
         type="datetime-local"
         placeholder="Start Date"
         value={showtimeData.startDate}
-        onChange={(e) => setShowtimeData({ ...showtimeData, startDate: e.target.value })}
+        onChange={(e) => {
+          console.log("Start Date selected:", e.target.value);
+          setShowtimeData({ ...showtimeData, startDate: e.target.value });
+        }}
         className="border rounded-lg p-2 mb-4 w-full"
       />
       <input
         type="datetime-local"
         placeholder="End Date"
         value={showtimeData.endDate}
-        onChange={(e) => setShowtimeData({ ...showtimeData, endDate: e.target.value })}
+        onChange={(e) => {
+          console.log("End Date selected:", e.target.value);
+          setShowtimeData({ ...showtimeData, endDate: e.target.value });
+        }}
         className="border rounded-lg p-2 mb-4 w-full"
       />
       <input
         type="number"
         placeholder="Ticket Price"
         value={showtimeData.ticketPrice}
-        onChange={(e) => setShowtimeData({ ...showtimeData, ticketPrice: e.target.value })}
+        onChange={(e) => {
+          console.log("Ticket Price entered:", e.target.value);
+          setShowtimeData({ ...showtimeData, ticketPrice: e.target.value });
+        }}
         className="border rounded-lg p-2 mb-4 w-full"
       />
       <button

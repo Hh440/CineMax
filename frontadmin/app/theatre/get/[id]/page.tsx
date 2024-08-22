@@ -31,7 +31,7 @@ export default function Home() {
 
   const handleShowtimeCreated = () => {
     alert("Showtime added. Refresh to fetch the latest details");
-  };
+  };  
 
   if (loading) return <div className="text-center py-20 text-lg">Loading...</div>;
 

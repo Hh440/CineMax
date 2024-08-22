@@ -167,6 +167,8 @@ router.post('/:movieId/showtimes', async (req, res) => {
   const { movieId } = req.params;
   const { startDate, endDate, theatreId, ticketPrice } = req.body;
 
+  console.log("Received data:", { movieId, startDate, endDate, theatreId, ticketPrice });
+
   try {
     const newShowtime = await prisma.showtime.create({
       data: {
@@ -183,5 +185,6 @@ router.post('/:movieId/showtimes', async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 module.exports = router;
