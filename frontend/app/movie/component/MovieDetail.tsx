@@ -103,7 +103,11 @@ const MovieDetail = ({movie}:MovieDetailProps) => {
                         <p>Start Date: <span className="font-medium text-gray-700">{new Date(showtime.startDate).toLocaleString()}</span></p>
                         <p>End Date: <span className="font-medium text-gray-700">{new Date(showtime.endDate).toLocaleString()}</span></p>
                     </div>
-                    <button className="mt-4 bg-blue-500 text-white py-2 rounded-lg" >Book Now</button>
+                    <button className="mt-4 bg-blue-500 text-white py-2 rounded-lg" 
+
+                    onClick={()=>{router.push('/payment')}}
+                    
+                    >Book Now</button>
             </div>
             ))}
         </div>

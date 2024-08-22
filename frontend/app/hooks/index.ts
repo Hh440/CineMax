@@ -43,14 +43,14 @@ export interface Showtime {
 
 export const useTheater = ({id}:{id:string})=>{
   const [loading,setLoading]= useState(true)
-  const [theater,setTheater]= useState<Theater|undefined>(undefined)
+  const [theatre,setTheater]= useState<Theater|undefined>(undefined)
 
   useEffect(()=>{
 
     axios.get(`http://localhost:5000/api/theatre/${id}`)
     .then(response=>{
-      setTheater(response.data.theater)
-      console.log(response.data.theater)
+      setTheater(response.data.theatre)
+      console.log(response.data.theatre)
       setLoading(false)
     })
     .catch(e=>{
@@ -62,7 +62,7 @@ export const useTheater = ({id}:{id:string})=>{
 
   return{
     loading,
-    theater
+    theatre
   }
 
 }

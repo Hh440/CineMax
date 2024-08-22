@@ -2,18 +2,19 @@
 
 import { Theater } from "@/app/hooks";
 import { useShowTheatertime } from "@/app/hooks";
+import Link from "next/link";
 
 interface TheaterDetailProps {
-  theater: Theater |undefined;
+  theatre: Theater |undefined;
 }
 
-const TheaterDetail = ({ theater }: TheaterDetailProps) => {
+const TheaterDetail = ({ theatre }: TheaterDetailProps) => {
 
   const { loading, showtimes } = useShowTheatertime({
-    theaterId: theater?.id || ""
+    theaterId: theatre?.id || ""
   });
 
-  if (!theater) {
+  if (!theatre) {
     return <div className="max-w-4xl mx-auto p-6 sm:p-8">Loading...</div>;
   }
 
@@ -21,15 +22,15 @@ const TheaterDetail = ({ theater }: TheaterDetailProps) => {
     <div className="container mx-auto p-4">
       <div className="bg-white shadow rounded-lg mb-8">
         <div className="p-4">
-          <h1 className="text-3xl font-bold">{theater.name}</h1>
+          <h1 className="text-3xl font-bold">{theatre.name}</h1>
         </div>
         <div className="p-4">
           <img
-            src={theater.image || "/placeholder.svg?height=400&width=800"}
-            alt={theater.name}
+            src={theatre.image || "/placeholder.svg?height=400&width=800"}
+            alt={theatre.name}
             className="w-full h-64 object-cover rounded-lg mb-4"
           />
-          <p className="text-gray-600">{theater.Address}</p>
+          <p className="text-gray-600">{theatre.Address}</p>
         </div>
       </div>
 
@@ -37,6 +38,8 @@ const TheaterDetail = ({ theater }: TheaterDetailProps) => {
 
       {showtimes && showtimes.length > 0 ? (
         showtimes.map(showtime => (
+          
+          <Link href={`/movie/${showtime.movie.id}`}>
           <div key={showtime.id} className="bg-white shadow rounded-lg mb-8">
             <div className="p-4 flex items-center justify-between">
               <h3 className="text-xl font-bold">{showtime.movie.title}</h3>
@@ -61,6 +64,7 @@ const TheaterDetail = ({ theater }: TheaterDetailProps) => {
               </div>
             </div>
           </div>
+          </Link>
         ))
       ) : (
         <p>No movies currently showing.</p>

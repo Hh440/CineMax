@@ -28,7 +28,7 @@ model Movie {
   startDate   DateTime?
   endDate     DateTime?
   showtimes     Showtime[]
-  reservations  Reservation[]
+  //reservations  Reservation[]
   theatres      Theatre[]
   screenings    Screening[]
   createdAt     DateTime     @default(now())
@@ -46,7 +46,7 @@ model Theatre {
   image         String?
   Address       String?
   showtimes     Showtime[]
-  reservations  Reservation[]
+ // reservations  Reservation[]
   movies        Movie[]
   screenings    Screening[]
   createdAt     DateTime     @default(now())
@@ -62,27 +62,29 @@ model Showtime {
   movieId     String
   theatre     Theatre   @relation(fields: [theatreId], references: [id])
   theatreId   String
-  reservations Reservation[]
+  //reservations Reservation[]
 }
 
 model Reservation {
   id          String       @id @default(uuid())
-  date        DateTime
-  startAt     DateTime
-  seats       Int
-  orderId     String
-  ticketPrice Float
-  total       Float
-  movie       Movie     @relation(fields: [movieId], references: [id])
-  movieId     String
-  theatre     Theatre   @relation(fields: [theatreId], references: [id])
-  theatreId   String
-  showtime    Showtime  @relation(fields: [showtimeId], references: [id])
-  showtimeId  String
-  user        User      @relation(fields: [userId], references: [id])
-  userId      String
-  name        String
-  phone       String
+  date        DateTime?
+  startAt     DateTime?
+  seats       String?
+  orderId     String?
+  ticketPrice Float?
+  total       Float?
+  movieName  String?
+  TIme        String?
+ // movie       Movie     @relation(fields: [movieId], references: [id])
+  //movieId     String
+  //theatre     Theatre   @relation(fields: [theatreId], references: [id])
+  //theatreId   String
+  //showtime    Showtime  @relation(fields: [showtimeId], references: [id])
+  //showtimeId  String
+  //user        User      @relation(fields: [userId], references: [id])
+  //userId      String
+  name        String?
+  phone       String?
 }
 
 
@@ -94,7 +96,7 @@ model User {
   phone       String?
   bookings    Booking[]
   role        Role         @default(CUSTOMER)
-  reservations Reservation[]
+  //reservations Reservation[]
   accounts    Account[]
 
   createdAt   DateTime     @default(now())
