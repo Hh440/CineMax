@@ -2,6 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+
 const Home = () => {
   const { push } = useRouter();
   const [formData, setFormData] = useState({
@@ -10,19 +11,28 @@ const Home = () => {
     description: "",
     language: "",
     trailerUrl: "",
-    genre: "",
+    genre: [],
     director: "",
     duration: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+
+    if (name === "genre") {
+      setFormData({
+        ...formData,
+        genre: value.split(",").map((g:string) => g.trim()), 
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
@@ -33,7 +43,7 @@ const Home = () => {
       console.log(response.data);
       alert("Movie added successfully!");
       const id = response.data.id;
-      console.log("id is ", id)
+      console.log("id is ", id);
       console.log("Movie created successfully");
       push(`/movie/get/${id}`);
     } catch (error) {
@@ -47,6 +57,7 @@ const Home = () => {
       <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-2xl">
         <h1 className="text-2xl font-bold mb-6 text-gray-800">Add a New Movie</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Other input fields remain unchanged */}
           <div>
             <label className="block text-gray-700 font-medium mb-2">Title:</label>
             <input
@@ -102,13 +113,14 @@ const Home = () => {
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-medium mb-2">Genre:</label>
+            <label className="block text-gray-700 font-medium mb-2">Genre (comma separated):</label>
             <input
               type="text"
               name="genre"
-              value={formData.genre}
+              value={formData.genre.join(", ")} // Join array back to string for display
               onChange={handleChange}
               required
+              placeholder="e.g., Action, Drama, Thriller"
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>

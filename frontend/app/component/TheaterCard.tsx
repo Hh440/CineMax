@@ -21,14 +21,14 @@ export const TheaterCard: React.FC<TheaterCardProps> = ({
   return (
     <Link href={`/theater/${id}`}>
       <div className="bg-white shadow-md overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300 max-w-sm mx-auto">
-        {image && (
+        
           <img
             src={image}
             alt={`${name} image`}
             className="w-full h-48 object-cover"
             style={{ aspectRatio: '16 / 9' }}
           />
-        )}
+        
         <div className="p-4">
           <div className="text-xl font-bold text-teal-800 mb-2">{name}</div>
           <div className="space-y-2 text-gray-600">
