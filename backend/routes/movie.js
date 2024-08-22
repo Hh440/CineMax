@@ -152,7 +152,7 @@ router.get('/:id',async(req,res)=>{
       if(movie){
           return res.json({movie})
       }else{
-          res.status(400).json({error:'Movie not found'})
+          res.status(404).json({error:'Movie not found'})
       }
 
   }catch(e){

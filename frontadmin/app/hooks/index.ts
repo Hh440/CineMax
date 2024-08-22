@@ -68,31 +68,42 @@ export const useTheatre = ({id} : {id : string}) => {
     }
 }
 
-export const useMovie = ({id} : {id: string}) => {
-    const [loading,setLoading]= useState(true)
-    const [movie,setMovie]= useState(undefined)
+export const useMovie = ({ id }: { id: string }) => {
+  const [loading, setLoading] = useState(true);
+  const [movie, setMovie] = useState<Movies | undefined>(undefined);
+  const [error, setError] = useState<string | null>(null); // New error state
 
-    useEffect(() => {
-        if (id) {
-            try {
-              axios.get(`http://localhost:5000/api/movie/${id}`)
-              .then(response => {
-                setMovie(response.data.movie);
-              setLoading(false);
-              }) 
-            } catch (error) {
-              console.error("Error fetching movie details:", error);
-              setLoading(false);
-            }
-          };
+  useEffect(() => {
+    if (id) {
+      const fetchMovie = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5000/api/movie/${id}`);
+          if (response.data.movie) {
+            setMovie(response.data.movie);
+            setError(null); // Reset any previous errors
+          } else {
+            setError('Movie not found'); // Handle 404-like case
+          }
+        } catch (error) {
+          console.error("Error fetching movie details:", error);
+          setError('An error occurred while fetching the movie details');
+        } finally {
+          setLoading(false);
+        }
+      };
 
-      }, [id]);
-
-    return {
-        loading,
-        movie
+      fetchMovie();
+    } else {
+      setLoading(false);
     }
-}
+  }, [id]);
+
+  return {
+    loading,
+    movie,
+    error, // Return the error state
+  };
+};
 
 
 export const useAllMovie = () => {
