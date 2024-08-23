@@ -11,7 +11,7 @@ const AllTheatres = () => {
   if (loading)
     return <div className="text-center py-20 text-lg">Loading...</div>;
 
-  const handleCardClick = (id) => {
+  const handleCardClick = (id : string) => {
     router.push(`/theatre/get/${id}`);
   };
 
