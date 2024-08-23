@@ -41,7 +41,7 @@ export const Nav=()=>{
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
+              <a href={'/coupon'} className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
                 <TicketIcon className="w-4 h-4" />
                 <span>Coupons</span>
               </a>

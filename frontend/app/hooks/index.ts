@@ -12,6 +12,13 @@ export interface Theater{
     "movies":Movies[]
 }
 
+export interface Reservation{
+  "movieName":string,
+  "Time":string,
+  "orderId":string,
+  "ticketPrice":number
+}
+
 export interface Movies{
   "id":string,
   "title":string,
@@ -201,5 +208,29 @@ export const useShowTheatertime = ({ theaterId }: { theaterId: string }) => {
   return {
       showtimes,
       loading
+  };
+};
+
+
+export const useReservation = () => {
+  const [loading, setLoading] = useState(true);
+  const [reservation, setReservation] = useState<Reservation[]>([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/reservation/get-reservations')
+      .then(response => {
+        console.log(response.data.reservations);
+        setReservation(response.data.reservations || []); // Fallback to an empty array if data is undefined or null
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching reservations:", error);
+        setLoading(false); // Ensure loading is set to false even if there is an error
+      });
+  }, []);
+
+  return {
+    reservation,
+    loading,
   };
 };

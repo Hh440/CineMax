@@ -7,19 +7,23 @@ const router = express.Router();
 // GET /reservations: Get all reservations for a logged-in user
 router.get('/get-reservations', async (req, res) => {
     try {
-        const userId = req.user.id; // Extract user ID from JWT token
+        
 
         const reservations = await prisma.reservation.findMany({
-            where: { userId },
-            include: {
-                movie: true,
-                theatre: true,
-                showtime: true,
+           
+            select: {
+               movieName:true,
+               orderId:true,
+               TIme:true,
+               ticketPrice:true
             },
         });
 
-        res.status(200).json(reservations);
+        console.log(reservations)
+
+        res.status(200).json({reservations});
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: 'Error fetching reservations' });
     }
 });

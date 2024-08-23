@@ -62,6 +62,7 @@ model Showtime {
   movieId     String
   theatre     Theatre   @relation(fields: [theatreId], references: [id])
   theatreId   String
+  
   //reservations Reservation[]
 }
 

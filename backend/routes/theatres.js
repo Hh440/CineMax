@@ -114,7 +114,7 @@ router.get('/:id',async(req,res)=>{
                 seats:true,
                 Address:true,
                 showtimes:true,
-                reservations:true,
+                //reservations:true,
                 movies:true,
                 screenings:true,
                 createdAt:true,
