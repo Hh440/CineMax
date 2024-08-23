@@ -152,4 +152,27 @@ export const useShowtime = ({ id }: { id: string }) => {
       showtimes,
       loading
   };
-};
+}
+
+
+export const useAllTheatres = () => {
+  const [loading, setLoading] = useState(true);
+  const [theatres, setTheatres] = useState<Theater[]>([]);
+
+  useEffect(() => {
+      axios.get(`http://localhost:5000/api/theatre/theatres` )
+          .then(response => {
+              setTheatres(response.data.theaters);
+              setLoading(false);
+          })
+          .catch(error => {
+              console.error('Error fetching showtimes:', error);
+              setLoading(false);
+          });
+  }, []);
+  console.log(theatres);
+  return {
+      theatres,
+      loading
+  };
+}

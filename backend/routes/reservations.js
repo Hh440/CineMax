@@ -56,7 +56,7 @@ router.post('/add-reservation', async (req, res) => {
         const reservation = await prisma.reservation.create({
             data: {
                 date: new Date(),
-                //startAt: showtime.startDate,
+                // startAt: showtime.startDate,
                 //seats,
                 orderId: `ORD-${Math.random().toString(36).substring(2, 15)}`, // Random Order ID
                 ticketPrice: ticketPrice,

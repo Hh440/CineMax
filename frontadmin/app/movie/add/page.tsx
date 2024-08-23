@@ -2,6 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { Nav } from "@/app/component/navbar/nav";
 
 const Home = () => {
   const { push } = useRouter();
@@ -53,6 +54,8 @@ const Home = () => {
   };
 
   return (
+    <div>
+      <Nav/>
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-2xl">
         <h1 className="text-2xl font-bold mb-6 text-gray-800">Add a New Movie</h1>
@@ -154,6 +157,7 @@ const Home = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

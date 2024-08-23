@@ -81,7 +81,7 @@ export function TheatreDetails({ id, theatre }: TheatreDetailsProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 flex items-center justify-center p-6">
+        <div className="min-h-screen  flex items-center justify-center p-6">
             <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-4xl transform transition duration-500 hover:scale-105">
                 <div className="flex flex-col md:flex-row items-center">
                     <img

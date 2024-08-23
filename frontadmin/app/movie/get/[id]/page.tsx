@@ -1,5 +1,6 @@
 'use client'
 
+import { Nav } from "@/app/component/navbar/nav";
 import MovieDetail from "../../component/MovieDetail"
 import { useMovie } from "@/app/hooks"
 import { useParams } from "next/navigation"
@@ -25,6 +26,7 @@ const Movie = () => {
   
     return (
       <div>
+        <Nav/>
         <MovieDetail movie={movie} />
       </div>
     );

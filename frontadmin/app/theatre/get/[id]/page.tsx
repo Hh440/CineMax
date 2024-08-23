@@ -4,6 +4,7 @@
 import { useTheatre } from '@/app/hooks';
 import { useParams } from "next/navigation";
 import { TheatreDetails } from '../../components/TheatreDetails';
+import { Nav } from '@/app/component/navbar/nav';
 
 type TheatreDetailsProps = {
   id: string;
@@ -29,6 +30,9 @@ export default function Home() {
   if (loading) return <div className="text-center py-20 text-lg">Loading...</div>;
 
   return (
-    <TheatreDetails id = {id} theatre = {theatre}></TheatreDetails>
+    <div>
+      <Nav/>
+      <TheatreDetails id = {id} theatre = {theatre}></TheatreDetails>
+    </div>
   );
 }
