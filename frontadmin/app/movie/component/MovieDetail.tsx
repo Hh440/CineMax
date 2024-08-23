@@ -213,6 +213,7 @@ const MovieDetail = ({ movie }: MovieDetailProps) => {
         </div>
       </div>
 
+      {/* Movie Details and showtimes */}
       <div className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">Available in Theaters</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">

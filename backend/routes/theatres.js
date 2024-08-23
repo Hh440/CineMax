@@ -29,27 +29,26 @@ router.post('/add-theatre', async (req, res) => {
 });
 
 router.post('/update-theatre/:id', async (req, res) => {
-    try{
+    try {
         const id = req.params.id;
-
         const body = req.body;
-        const existingTheatre = await prisma.theatre.findFirst({where : {id : id}});
 
-        const theatre = await prisma.theatre.create({data : {
-            name : body.name || existingTheatre.name,
-            city : body.city || existingTheatre.city,
-            ticketPrice : body.ticketPrice || existingTheatre.ticketPrice,
-            seats : body.seats || existingTheatre.seats,
-            image : body.image || existingTheatre.image,
-            Address:body.Address || existingTheatre.Address
-        }});
+        const updatedTheatre = await prisma.theatre.update({
+            where: { id: id },
+            data: {
+                name: body.name || undefined,
+                city: body.city || undefined,
+                ticketPrice: body.ticketPrice || undefined,
+                seats: body.seats || undefined,
+                image: body.image || undefined,
+                address: body.address || undefined,
+            },
+        });
 
-        res.status(411).json({msg : "success. Theatre details updated successfully", theatre : theatre});
-        console.log("success. Theatre details updated successfully ", theatre);
-    }
-    catch(e)
-    {
-        res.status(503).json({msg : "Error occured while updating Theatre details", error : e});
+        res.status(200).json({ msg: "Success. Theatre details updated successfully", theatre: updatedTheatre });
+        console.log("Success. Theatre details updated successfully", updatedTheatre);
+    } catch (e) {
+        res.status(503).json({ msg: "Error occurred while updating Theatre details", error: e });
         console.log("There was a problem in updating Theatre details", e);
     }
 });
@@ -57,21 +56,27 @@ router.post('/update-theatre/:id', async (req, res) => {
 router.post('/delete-theatre/:id', async (req, res) => {
     const id = req.params.id;
 
-    try{
-        const deletedTheatre = await prisma.theatre.delete({where : {id : id}});
-        res.json({message : "Theatre removed from the database", data : deletedTheatre});
-        console.log("Theatre Deleted ", deletedTheatre);
-    }
-    catch(e){
+    try {
+        // Delete related showtimes first
+        await prisma.showtime.deleteMany({
+            where: {
+                theatreId: id,
+            },
+        });
+
+        // Now delete the theatre
+        const deletedTheatre = await prisma.theatre.delete({ where: { id: id } });
+        res.json({ message: "Theatre removed from the database", data: deletedTheatre });
+        console.log("Theatre Deleted", deletedTheatre);
+    } catch (e) {
         if (e.code === 'P2025') {
-        res.status(404).json({ error: "Theatre not found" });
+            res.status(404).json({ error: "Theatre not found" });
         } else {
-        res.status(500).json({ error: "Error occurred while deleting Theatre." });
+            res.status(500).json({ error: "Error occurred while deleting Theatre." });
         }
         console.log("Error while deleting the Theatre from the database", e);
     }
 });
-
 
 
 router.get('/theatres',async(req,res)=>{
@@ -114,7 +119,7 @@ router.get('/:id',async(req,res)=>{
                 seats:true,
                 Address:true,
                 showtimes:true,
-                //reservations:true,
+                // reservations:true,
                 movies:true,
                 screenings:true,
                 createdAt:true,
