@@ -8,10 +8,10 @@ export default function Home() {
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <img
                 alt="Logo"
-                height="72"
-                width="72"
+                height="80"
+                width="80"
                 className="mx-auto "
-                src="/Imgaes/logo.png"
+                src="/images/logo.png"
                 />
                 <h2 className="mt-6 text-center text-3xl  
                 font-bold tracking-tight text-gray-900">
