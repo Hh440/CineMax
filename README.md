@@ -86,9 +86,14 @@ Ensure you have the following installed on your machine:
     npm run dev
     ```
 
+    3c: Now you can add and delete theatres, add movies ,create showtimes.
+   ### NOTE : Admin username and password are as follows. Only use the following usernamme and password to access Adminfrontend : 
+      username : admin
+      password : signin
 
-  
-4. To run User Frontend:
+
+
+5. To run User Frontend:
     ```bash
     cd CineMax/frontend
    ```
