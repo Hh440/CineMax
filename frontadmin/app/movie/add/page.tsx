@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Nav } from "@/app/component/navbar/nav";
+import { BACKEND_URL } from "@/config";
 
 const Home = () => {
   const { push } = useRouter();
@@ -38,7 +39,7 @@ const Home = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/movie/add-movie",
+        `${BACKEND_URL}/api/movie/add-movie`,
         formData
       );
       console.log(response.data);

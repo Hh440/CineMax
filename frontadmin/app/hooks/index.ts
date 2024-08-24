@@ -1,6 +1,7 @@
 import axios from "axios";
 import { lazy, use, useEffect, useState } from "react";
 import { DateTime } from "next-auth/providers/kakao";
+import { BACKEND_URL } from "@/config";
 
 
 export interface Theater{
@@ -49,7 +50,7 @@ export const useTheatre = ({id} : {id : string}) => {
 
     useEffect(()=>{
 
-        axios.get(`http://localhost:5000/api/theatre/${id}`)
+        axios.get(`${BACKEND_URL}/api/theatre/${id}`)
         .then(response=>{
         setTheatre(response.data.theatre)
         console.log(response.data.theatre)
@@ -77,7 +78,7 @@ export const useMovie = ({ id }: { id: string }) => {
     if (id) {
       const fetchMovie = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/movie/${id}`);
+          const response = await axios.get(`${BACKEND_URL}/api/movie/${id}`);
           if (response.data.movie) {
             setMovie(response.data.movie);
             setError(null); // Reset any previous errors
@@ -112,7 +113,7 @@ export const useAllMovie = () => {
 
   useEffect(() => {
           try {
-            axios.get(`http://localhost:5000/api/movie/movies`)
+            axios.get(`${BACKEND_URL}/api/movie/movies`)
             .then(response => {
               setMovies(response.data.movies);
               console.log(response.data.movies);
@@ -136,7 +137,7 @@ export const useShowtime = ({ id }: { id: string }) => {
   const [showtimes, setShowtimes] = useState<Showtime[]>([]);
 
   useEffect(() => {
-      axios.get(`http://localhost:5000/api/showtimes/${id}` )
+      axios.get(`${BACKEND_URL}/api/showtimes/${id}` )
           .then(response => {
             
               setShowtimes(response.data.showtimes);
@@ -160,7 +161,7 @@ export const useAllTheatres = () => {
   const [theatres, setTheatres] = useState<Theater[]>([]);
 
   useEffect(() => {
-      axios.get(`http://localhost:5000/api/theatre/theatres` )
+      axios.get(`${BACKEND_URL}/api/theatre/theatres` )
           .then(response => {
               setTheatres(response.data.theaters);
               setLoading(false);

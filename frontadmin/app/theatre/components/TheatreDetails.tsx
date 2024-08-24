@@ -1,5 +1,6 @@
 import CreateShowtimeForm from "@/app/component/CreateShowtimeForm";
 import MoviesShowtimes from "@/app/component/MoviesShowtime";
+import { BACKEND_URL } from "@/config";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -34,7 +35,7 @@ export function TheatreDetails({ id, theatre }: TheatreDetailsProps) {
 
     const addMovie = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/theatre/${id}/add-movie`, {
+            const res = await fetch(`${BACKEND_URL}/api/theatre/${id}/add-movie`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ export function TheatreDetails({ id, theatre }: TheatreDetailsProps) {
 
     const updateTheatre = async () => {
         try {
-            const res = await axios.post(`http://localhost:5000/api/theatre/update-theatre/${id}`, formData, {
+            const res = await axios.post(`${BACKEND_URL}/api/theatre/update-theatre/${id}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -71,7 +72,7 @@ export function TheatreDetails({ id, theatre }: TheatreDetailsProps) {
 
     const deleteTheatre = async () => {
         try {
-            const res = await axios.post(`http://localhost:5000/api/theatre/delete-theatre/${id}`,{})
+            const res = await axios.post(`${BACKEND_URL}/api/theatre/delete-theatre/${id}`,{})
             const data = res.data
             console.log("Theatre deleted:", data);
             alert("Theatre Deleted")

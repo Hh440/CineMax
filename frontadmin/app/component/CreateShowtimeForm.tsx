@@ -5,6 +5,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs, { Dayjs } from 'dayjs';
+import { BACKEND_URL } from '@/config';
 
 export default function CreateShowtimeForm({ movieId, theatreId, onShowtimeCreated }) {
   const [showtimeData, setShowtimeData] = useState({
@@ -23,7 +24,7 @@ export default function CreateShowtimeForm({ movieId, theatreId, onShowtimeCreat
     console.log("Sending showtime data:", { ...showtimeData, startDate, endDate });
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/movie/${movieId}/showtimes`, {
+      const response = await axios.post(`${BACKEND_URL}/api/movie/${movieId}/showtimes`, {
         startDate,
         endDate,
         theatreId,

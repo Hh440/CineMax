@@ -5,6 +5,7 @@ import { useShowtime } from "@/app/hooks";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import { BACKEND_URL } from "@/config";
 
 
 interface MovieDetailProps {
@@ -46,7 +47,7 @@ const MovieDetail = ({ movie }: MovieDetailProps) => {
 
   const handleUpdateMovie = async () => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/movie/update-movie-details/${movie?.id}`, formData);
+      const response = await axios.post(`${BACKEND_URL}/api/movie/update-movie-details/${movie?.id}`, formData);
   
       if (response.status === 200) {
         alert('Movie updated successfully');
@@ -64,7 +65,7 @@ const MovieDetail = ({ movie }: MovieDetailProps) => {
   const handleDeleteMovie = async () => {
     const confirmDelete = confirm('Are you sure you want to delete this movie?');
     if (confirmDelete) {
-      const response = await axios.post(`http://localhost:5000/api/movie/delete-movie/${movie?.id}`,{})
+      const response = await axios.post(`${BACKEND_URL}/api/movie/delete-movie/${movie?.id}`,{})
 
       if (response.status == 200) {
         alert('Movie deleted successfully');

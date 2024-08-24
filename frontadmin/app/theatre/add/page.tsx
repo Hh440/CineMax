@@ -2,6 +2,7 @@
 
 import { Button } from "@/app/component/Button";
 import { Nav } from "@/app/component/navbar/nav";
+import { BACKEND_URL } from "@/config";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -113,7 +114,7 @@ function EnterDetails() {
             };
 
             const response = await axios.post(
-              "http://localhost:5000/api/theatre/add-theatre",
+              `${BACKEND_URL}/api/theatre/add-theatre`,
               data,
               {
                 headers: {
@@ -125,6 +126,7 @@ function EnterDetails() {
             if (response.status === 200) {
               const id = response.data.id;
               console.log("Theatre created successfully");
+              alert("Theatre created successfully");
               push(`/theatre/get/${id}`);
             } else {
               console.log("Unexpected response status:", response.status);
