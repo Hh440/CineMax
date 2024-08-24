@@ -7,7 +7,7 @@ export const Nav=()=>{
         <header className="bg-[#007bff] text-white py-4 px-6 flex items-center justify-between">
                 <Link href='#' className="flex items-center gap-2" prefetch={false}>
                     <FilmIcon className="w-c6 h-6 fill-[#87ceeb]"/>
-                    <span className="text-3xl font-bold">Maxer</span>
+                    <span className="text-3xl font-bold">CineMax</span>
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-6">
