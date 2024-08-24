@@ -43,7 +43,7 @@ Ensure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/CineMax.git
+   git clone [https://github.com/yourusername/CineMax.git](https://github.com/Hh440/CineMax.git)
   
 2. To run backend:
     ```bash
