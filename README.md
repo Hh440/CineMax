@@ -88,8 +88,8 @@ Ensure you have the following installed on your machine:
 
     3c: Now you can add and delete theatres, add movies ,create showtimes.
    ## ** NOTE : Admin username and password are as follows. Only use the following usernamme and password to access Adminfrontend : **
-     - ** username : admin ** 
-      - ** password : signin  **
+     -  username : admin 
+      -  password : signin  
 
 
 
