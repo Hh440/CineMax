@@ -8,6 +8,7 @@ import Link from "next/link";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import { BACKEND_URL } from '@/config';
 
 interface MovieDetailProps {
   movie: Movies | undefined;
@@ -44,7 +45,7 @@ const PaymentCard = ({ movie }: MovieDetailProps) => {
 
     try {
       const selectedShowtime = showtimes[selectedShowtimeIndex];
-      await axios.post('http://localhost:5000/api/reservation/add-reservation', {
+      await axios.post(`${BACKEND_URL}/api/reservation/add-reservation`, {
         ticketPrice: selectedShowtime?.ticketPrice,
         movieName: movie?.title,
         time: selectedShowtime?.startTime,

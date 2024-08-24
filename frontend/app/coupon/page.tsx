@@ -13,11 +13,13 @@ export default function Coupon() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      
+    <div className="min-h-screen bg-blue-50 pb-10 relative overflow-hidden flex flex-col">
+      {/* Theater curtain effect */}
+      <div className="bg-teal-700 h-16"></div>
+      <div className="bg-teal-600 h-8 transform -skew-y-3"></div>
 
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 ">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
@@ -46,6 +48,7 @@ export default function Coupon() {
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">Available Coupons</h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Coupon Cards */}
               <div className="border p-4 rounded">
                 <div className="mb-2">
                   <h3 className="text-xl font-semibold">Weekend Special</h3>
@@ -76,6 +79,7 @@ export default function Coupon() {
                   </div>
                 </div>
               </div>
+              {/* Additional Coupon Cards */}
               <div className="border p-4 rounded">
                 <div className="mb-2">
                   <h3 className="text-xl font-semibold">Family Pack</h3>
@@ -139,7 +143,7 @@ export default function Coupon() {
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 ">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">Special Promotions</h2>
             <div className="w-full">
@@ -190,11 +194,14 @@ export default function Coupon() {
           </div>
         </section>
       </main>
-      <footer className="bg-gray-800 text-white py-4">
-        <div className="container px-4 md:px-6">
-          <p className="text-center">&copy; 2024 Acme Cinemas. All rights reserved.</p>
-        </div>
-      </footer>
+
+      {/* Decorative elements */}
+      <div className="absolute top-32 left-4 text-teal-200 transform -rotate-12 opacity-50">
+        <Film className="w-24 h-24" />
+      </div>
+      <div className="absolute bottom-32 right-4 text-teal-200 transform rotate-12 opacity-50">
+        <Film className="w-24 h-24" />
+      </div>
     </div>
   )
 }

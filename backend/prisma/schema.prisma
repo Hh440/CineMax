@@ -69,7 +69,7 @@ model Showtime {
 model Reservation {
   id          String       @id @default(uuid())
   date        DateTime?
-  startAt     DateTime?
+  
   seats       String?
   orderId     String?
   ticketPrice Float?
