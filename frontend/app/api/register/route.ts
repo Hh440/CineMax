@@ -1,3 +1,4 @@
+import { BACKEND_URL } from "@/config";
 import { NextResponse
  } from "next/server";
 
@@ -14,7 +15,7 @@ import { NextResponse
         }
 
         // Forward the request to the backend server
-        const response = await fetch('http://localhost:5000/api/auth/register', {
+        const response = await fetch(`${BACKEND_URL}/api/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password })

@@ -9,7 +9,12 @@ export default withAuth({
 
 export const config={
     matcher:[
-        "/display/:path*"
+        "/display/:path*",
+        "/theatre/:path*",
+        "/movies/showtime/:path*",
+        "/coupon/:path*",
+        "/selection/:path*",
+        "/payment/:path*"
     ]
 
 }

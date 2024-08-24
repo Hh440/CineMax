@@ -1,3 +1,4 @@
+import { BACKEND_URL } from "@/config";
 import NextAuth ,{AuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google"
@@ -23,7 +24,7 @@ export const authOptions :AuthOptions ={
                     throw new Error('Invalid Credentials')
                 }
 
-                const res = await fetch('http://localhost:5000/api/auth/credentials', {
+                const res = await fetch(`${BACKEND_URL}/api/auth/credentials`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(credentials)

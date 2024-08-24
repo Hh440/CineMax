@@ -20,7 +20,7 @@ const Showtime = () => {
 
         {/* Check if reservation is available before mapping */}
        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6">
           {reservation && reservation.length > 0 ? (
             reservation.map(show => (
               <Show

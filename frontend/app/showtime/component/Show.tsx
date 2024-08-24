@@ -14,7 +14,7 @@ const Show: React.FC<ResercationProps> = ({
   time
 }) => {
   return (
-    <div className="container mx-auto px-6 py-10 bg-white shadow-md overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300 max-w-sm mx-auto"> {/* Increased padding */}
+    <div className="container px-6 py-10 bg-white shadow-md overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300 max-w-sm mx-auto"> {/* Increased padding */}
       
         <div className="overflow-hidden w-full"> {/* Increased border radius and shadow for larger card appearance */}
           <div className="bg-primary/10 pb-4 px-6"> {/* Increased padding */}
