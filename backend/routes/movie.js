@@ -86,7 +86,7 @@ router.post('/delete-movie/:id', async (req, res)=> {
 
   try{
     const deletedMovie = await prisma.movie.delete({where : {id : id}});
-    res.json({message : "Movie removed from the database", data : deletedMovie});
+    res.status(200).json({message : "Movie removed from the database", data : deletedMovie});
     console.log("Movie Deleted ", deletedMovie);
   }
   catch(e){

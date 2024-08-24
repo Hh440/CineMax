@@ -74,6 +74,7 @@ export function TheatreDetails({ id, theatre }: TheatreDetailsProps) {
             const res = await axios.post(`http://localhost:5000/api/theatre/delete-theatre/${id}`,{})
             const data = res.data
             console.log("Theatre deleted:", data);
+            alert("Theatre Deleted")
             router.push("/"); // Redirect to the home page or another page after deletion
         } catch (error) {
             console.error("Error deleting theatre:", error);

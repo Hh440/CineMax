@@ -64,9 +64,9 @@ const MovieDetail = ({ movie }: MovieDetailProps) => {
   const handleDeleteMovie = async () => {
     const confirmDelete = confirm('Are you sure you want to delete this movie?');
     if (confirmDelete) {
-      const response = axios.post(`http://localhost:5000/api/movie/delete-movie/${movie?.id}`,{})
+      const response = await axios.post(`http://localhost:5000/api/movie/delete-movie/${movie?.id}`,{})
 
-      if (response.ok) {
+      if (response.status == 200) {
         alert('Movie deleted successfully');
         router.push('/'); // redirect to homepage after deletion
       } else {
