@@ -1,6 +1,8 @@
 import axios from "axios";
 import { DateTime } from "next-auth/providers/kakao";
-import { lazy, use, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
+import Theater from "../theater/[id]/page";
+import { BACKEND_URL } from "@/config";
 
 export interface Theater{
     "name":string,
@@ -54,9 +56,10 @@ export const useTheater = ({id}:{id:string})=>{
 
   useEffect(()=>{
 
-    axios.get(`http://localhost:5000/api/theatre/${id}`)
+    axios.get(`${BACKEND_URL}/api/theatre/${id}`)
     .then(response=>{
-      setTheater(response.data.theatre)
+      const fetchedTheatre = response.data.theatre
+      setTheater(fetchedTheatre)
       console.log(response.data.theatre)
       setLoading(false)
     })
@@ -84,7 +87,7 @@ export const useTheaters=()=>{
 
     useEffect(()=>{
         axios
-        .get('http://localhost:5000/api/theatre/theatres')
+        .get(`${BACKEND_URL}/api/theatre/theatres`)
         .then(response => {
           setTheaters(response.data.theaters);
           console.log(theaters)
@@ -107,7 +110,7 @@ export const useMovie = ({id}:{id:string})=>{
   const [movie,setMovie] = useState<Movies| undefined>(undefined)
 
   useEffect(()=>{
-    axios.get(`http://localhost:5000/api/movie/${id}`)
+    axios.get(`${BACKEND_URL}/api/movie/${id}`)
     .then(response=>{
       const fetchedMovie = response.data.movie;
       setMovie({
@@ -146,7 +149,7 @@ export const useMovies = ()=>{
   const [movies,setMovies] = useState<Movies[]>([])
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/api/movie/movies')
+    axios.get(`${BACKEND_URL}/api/movie/movies`)
     .then(response=>{
       setMovies(response.data.movies)
       setLoading(false)
@@ -170,7 +173,7 @@ export const useShowtime = ({ id }: { id: string }) => {
   const [showtimes, setShowtimes] = useState<Showtime[]>([]);
 
   useEffect(() => {
-      axios.get(`http://localhost:5000/api/showtimes/${id}` )
+      axios.get(`${BACKEND_URL}/api/showtimes/${id}` )
           .then(response => {
             
               setShowtimes(response.data.showtimes);
@@ -194,8 +197,9 @@ export const useShowTheatertime = ({ theaterId }: { theaterId: string }) => {
   const [showtimes, setShowtimes] = useState<Showtime[]>([]);
   console.log(theaterId)
   useEffect(() => {
-      axios.get(`http://localhost:5000/api/showtimes/${theaterId}` )
+      axios.get(`${BACKEND_URL}/api/showtimes/${theaterId}` )
           .then(response => {
+            const fetchedShowtime = response.data.showtimes;
               setShowtimes(response.data.showtimes);
               setLoading(false);
           })
@@ -217,7 +221,7 @@ export const useReservation = () => {
   const [reservation, setReservation] = useState<Reservation[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/reservation/get-reservations')
+    axios.get(`${BACKEND_URL}/api/reservation/get-reservations`)
       .then(response => {
         console.log(response.data.reservations);
         setReservation(response.data.reservations || []); // Fallback to an empty array if data is undefined or null
