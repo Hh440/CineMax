@@ -1,6 +1,6 @@
-# MovieMate 🎬
+# CineMax 🎬
 
-MovieMate allows you to view your favorite movies and book them in your nearest theaters. You can browse through a wide selection of movies, check showtimes, and reserve your seats all in one place. Enjoy a seamless movie booking experience with MovieMate!
+CineMax allows you to view your favorite movies and book them in your nearest theaters. You can browse through a wide selection of movies, check showtimes, and reserve your seats all in one place. Enjoy a seamless movie booking experience with CineMax!
 
 ## Features
 
@@ -43,11 +43,11 @@ Ensure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/MovieMate.git
+   git clone https://github.com/yourusername/CineMax.git
   
 2. To run backend:
     ```bash
-    cd MovieMate/backend
+    cd CineMax/backend
    ```
    2a : Create an .env file in backend and copy the contents from env.example
     ```js
@@ -74,7 +74,7 @@ Ensure you have the following installed on your machine:
   
 3. To run AdminFrontend:
     ```bash
-    cd MovieMate/frontadmin
+    cd CineMax/frontadmin
    ```
    3a : Run npm install
     ```js
@@ -90,9 +90,9 @@ Ensure you have the following installed on your machine:
   
 4. To run User Frontend:
     ```bash
-    cd MovieMate/frontend
+    cd CineMax/frontend
    ```
-   4a : Create an .env file in fronend and copy the contents from env.example from MovieMate/frontend/env.example
+   4a : Create an .env file in fronend and copy the contents from env.example from CineMax/frontend/env.example
     ```js
     NEXTAUTH_SECRET="Enter_your_Secret"
     ```
