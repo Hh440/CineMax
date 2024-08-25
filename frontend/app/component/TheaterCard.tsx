@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MapPinIcon, MonitorIcon, UtensilsIcon, StarIcon } from 'lucide-react';
+//import { MapPinIcon, MonitorIcon, UtensilsIcon, StarIcon } from 'lucide-react';
 
 interface TheaterCardProps {
   name: string;
@@ -33,24 +33,26 @@ export const TheaterCard: React.FC<TheaterCardProps> = ({
           <div className="text-xl font-bold text-teal-800 mb-2">{name}</div>
           <div className="space-y-2 text-gray-600">
             <div className="flex items-center gap-2">
-              <MapPinIcon className="w-4 h-4 text-teal-600" />
+             {/* <MapPinIcon className="w-4 h-4 text-teal-600" /> */}
               <span>{Address}</span>
             </div>
             <div className="flex items-center gap-2">
-              <MonitorIcon className="w-4 h-4 text-teal-600" />
+              {/*<MonitorIcon className="w-4 h-4 text-teal-600" />*/}
               <span>{seat} Seats</span>
             </div>
             <div className="flex items-center gap-2">
-              <UtensilsIcon className="w-4 h-4 text-teal-600" />
+            {/*  <UtensilsIcon className="w-4 h-4 text-teal-600" />*/}
               <span>Ticket Price: ${ticketPrice}</span>
             </div>
           </div>
           <div className="flex items-center gap-2 mt-3">
+            {/*
             <StarIcon className="h-5 w-5 text-yellow-400" />
             <StarIcon className="h-5 w-5 text-yellow-400" />
             <StarIcon className="h-5 w-5 text-yellow-400" />
             <StarIcon className="h-5 w-5 text-gray-300" />
             <StarIcon className="h-5 w-5 text-gray-300" />
+            */}
             <span className="text-gray-500 text-sm ml-2">4.2</span>
           </div>
         </div>
