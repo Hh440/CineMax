@@ -1,23 +1,14 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+import { redirect } from 'next/navigation';
 
-export default function AdminPage() {
-  return <div>Welcome, Admin! You are signed in.</div>;
-}
-
-export async function getServerSideProps(context) {
-  const session = await getServerSession(context.req, context.res, authOptions);
+export default async function AdminPage() {
+  const session = await getServerSession(authOptions);
 
   if (!session) {
-    return {
-      redirect: {
-        destination: '/auth/signin',
-        permanent: false,
-      },
-    };
+    // Redirect to the sign-in page if not authenticated
+    redirect('/auth/signin');
   }
 
-  return {
-    props: { session },
-  };
+  return <div>Welcome, Admin! You are signed in.</div>;
 }
