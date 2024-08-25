@@ -209,7 +209,7 @@ const MovieDetail = ({ movie }: MovieDetailProps) => {
               alt={movie.title}
               className="w-full h-auto rounded-lg mb-4"
             />
-            <button className="w-full bg-blue-500 text-white py-2 rounded-lg">Book Tickets</button>
+            {/* <button className="w-full bg-blue-500 text-white py-2 rounded-lg">Book Tickets</button> */}
           </div>
         </div>
       </div>
