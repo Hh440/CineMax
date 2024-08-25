@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-//import { FilmIcon, TicketIcon, PopcornIcon, ClapperboardIcon } from 'lucide-react';
+import { FilmIcon, TicketIcon, PopcornIcon, ClapperboardIcon } from 'lucide-react';
 import { Movies } from "@/app/hooks";
 import { useShowtime } from '@/app/hooks';
 import { useParams } from "next/navigation";
@@ -69,7 +69,7 @@ const PaymentCard = ({ movie }: MovieDetailProps) => {
       <div className="w-full max-w-md bg-white shadow-xl relative z-10 rounded-lg">
         <div className="text-center p-4 border-b">
           <div className="text-3xl font-bold text-teal-600 flex items-center justify-center gap-2">
-           {/* <ClapperboardIcon className="w-8 h-8" /> */}
+               <ClapperboardIcon className="w-8 h-8" /> 
             CinePay Gateway
           </div>
           <p className="text-gray-600 mt-1">Complete your movie ticket purchase</p>
@@ -77,7 +77,7 @@ const PaymentCard = ({ movie }: MovieDetailProps) => {
         <div className="p-4">
           <div className="mb-6 bg-blue-50 p-4 rounded-lg border border-blue-200">
             <h3 className="text-lg font-semibold mb-2 flex items-center gap-2 text-teal-700">
-              {/*<TicketIcon className="w-5 h-5" />*/}
+                <TicketIcon className="w-5 h-5" />
               Booking Summary
             </h3>
             <p className="text-sm text-gray-600">Movie: {movie?.title}</p>
@@ -166,10 +166,10 @@ const PaymentCard = ({ movie }: MovieDetailProps) => {
 
       {/* Decorative elements */}
       <div className="absolute top-32 left-4 text-teal-500 transform -rotate-12">
-       {/* <PopcornIcon className="w-16 h-16" /> */}
+        <PopcornIcon className="w-16 h-16" /> 
       </div>
       <div className="absolute bottom-4 right-4 text-teal-500 transform rotate-12">
-       {/* <FilmIcon className="w-20 h-20" /> */}
+        <FilmIcon className="w-20 h-20" /> 
       </div>
     </div>
   );

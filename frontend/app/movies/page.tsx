@@ -2,7 +2,7 @@
 import { Nav } from '@/app/component/navbar/nav'
 import { MovieCard } from './component/MovieCard'
 import { useMovies } from '../hooks'
-//import { ClapperboardIcon } from 'lucide-react'
+import { ClapperboardIcon } from 'lucide-react'
 
 const Movies = () => {
   const { loading, movies } = useMovies()
@@ -17,7 +17,7 @@ const Movies = () => {
 
       <main className='flex-1 py-12 px-4 md:px-6 max-w-6xl mx-auto'>
         <h1 className="text-4xl font-bold text-teal-700 mb-8 flex items-center justify-center gap-3">
-          {/*<ClapperboardIcon className="w-10 h-10" /> */}
+          <ClapperboardIcon className="w-10 h-10" /> 
           Movies
         </h1>
         
@@ -34,7 +34,7 @@ const Movies = () => {
         </div>
       </main>
 
-      {/* Decorative elements 
+      {/* Decorative elements */}
       <div className="absolute top-32 left-4 text-teal-200 transform -rotate-12 opacity-50">
         <ClapperboardIcon className="w-24 h-24" />
       </div>
@@ -42,7 +42,7 @@ const Movies = () => {
         <ClapperboardIcon className="w-32 h-32" />
       </div>
 
-      */}
+      
     </div>
   )
 }

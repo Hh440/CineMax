@@ -3,7 +3,7 @@
 import { Movies } from "@/app/hooks";
 import { useShowtime } from "@/app/hooks";
 import { useParams, useRouter } from "next/navigation";
-// import { BuildingIcon } from 'lucide-react';
+ import { BuildingIcon } from 'lucide-react';
 
 interface MovieDetailProps {
   movie: Movies | undefined;
@@ -116,13 +116,13 @@ const MovieDetail = ({ movie }: MovieDetailProps) => {
         </div>
       </div>
 
-      {/* Decorative elements 
+      {/* Decorative elements */}
       <div className="absolute top-32 left-4 text-teal-200 transform -rotate-12 opacity-50">
         <BuildingIcon className="w-24 h-24" />
       </div>
       <div className="absolute bottom-4 right-4 text-teal-300 transform rotate-12 opacity-50">
         <BuildingIcon className="w-32 h-32" />
-      </div> */}
+      </div> 
     </div>
   );
 }

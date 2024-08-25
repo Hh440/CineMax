@@ -2,7 +2,7 @@
 import { Nav } from '@/app/component/navbar/nav'
 import Show from './component/Show'
 import { useReservation } from '../hooks'
-//import { BuildingIcon } from 'lucide-react'
+import { BuildingIcon } from 'lucide-react'
 
 const Showtime = () => {
   const { loading, reservation } = useReservation()
@@ -28,7 +28,7 @@ const Showtime = () => {
                 movieName={show.movieName}
                 orderId={show.orderId}
                 ticketPrice={show.ticketPrice}
-                time={show.Time}
+                time={new Date()}
               />
             ))
           ) : (
@@ -37,14 +37,14 @@ const Showtime = () => {
         </div>
       </main>
 
-      {/* Decorative elements 
+      {/* Decorative elements */}
       <div className="absolute top-32 left-4 text-teal-200 transform -rotate-12 opacity-50">
         <BuildingIcon className="w-24 h-24" />
       </div>
       <div className="absolute bottom-4 right-4 text-teal-300 transform rotate-12 opacity-50">
         <BuildingIcon className="w-32 h-32" />
       </div>
-      */}
+      
     </div>
   )
 }
