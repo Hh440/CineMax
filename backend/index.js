@@ -16,6 +16,9 @@ app.use('/api/movie', movieRoute);
 app.use('/api/showtimes', showtimeRoute);
 app.use('/api/reservation',moviereservation)
 
+app.get('/', (req, res)=>{
+  res.status(200).json("Your server is running");
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
