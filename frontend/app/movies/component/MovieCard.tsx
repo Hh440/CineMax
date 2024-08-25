@@ -41,7 +41,7 @@
 
             
               <div className="p-4">
-                  <h2 className="text-xl font-bold mb-2">{title}</h2>
+                  <h2 className="text-xl text-wrap font-bold mb-2">{title}</h2>
                   <div className="flex items-center mb-2">
                       <span>{director}</span>
                   </div>
