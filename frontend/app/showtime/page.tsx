@@ -12,6 +12,9 @@ const Showtime = () => {
       {/* Theater curtain effect */}
       <div className="bg-teal-700 h-16"></div>
       <div className="bg-teal-600 h-8 transform -skew-y-3"></div>
+      
+
+      <Nav/>
 
       <main className='flex-1 py-12 px-4 md:px-6 max-w-6xl mx-auto '>
         <h1 className="text-4xl font-bold text-teal-700 mb-8 flex items-center justify-center gap-3">
