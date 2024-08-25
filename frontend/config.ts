@@ -1,1 +1,1 @@
-export const BACKEND_URL="https://cinemax-9yz3.onrender.com"
+export const BACKEND_URL="https://cinemax-98lu.onrender.com"
