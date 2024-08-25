@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { MapPinIcon, MonitorIcon, UtensilsIcon, StarIcon } from 'lucide-react';
+import { MapPinIcon, MonitorIcon, UtensilsIcon, StarIcon ,ImageIcon} from 'lucide-react';
+import { useState,useEffect } from 'react';
 
 interface TheaterCardProps {
   name: string;
@@ -18,16 +19,51 @@ export const TheaterCard: React.FC<TheaterCardProps> = ({
   ticketPrice,
   Address,
 }) => {
+  const [imgError, setImgError] = useState(false);
+  const [fallbackError, setFallbackError] = useState(false);
+  const [fallbackImage, setFallbackImage] = useState<string>('');
+
+  useEffect(() => {
+    // Array of fallback image paths
+    const fallbackImages = [
+      '/images/cinema.jpeg',
+      '/images/theatre.jpg',
+      '/images/screen.avif',
+      '/images/box.jpg',
+      '/images/buster.jpg'
+    ];
+
+    // Select a random fallback image
+    const randomImage = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
+    setFallbackImage(randomImage);
+  }, []); // Empty dependency array to ensure this runs only once on mount
+
+  const displayImage = imgError ? fallbackImage : image;
   return (
+
+    
     <Link href={`/theater/${id}`}>
       <div className="bg-white shadow-md overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300 max-w-sm mx-auto">
         
+      {!imgError || !fallbackError ? (
           <img
-            src={image}
+            src={displayImage}
             alt={`${name} image`}
             className="w-full h-48 object-cover"
             style={{ aspectRatio: '16 / 9' }}
+            onError={() => {
+              if (!imgError) {
+                setImgError(true); // Try the random fallback image
+              } else {
+                setFallbackError(true); // Both original and fallback failed
+              }
+            }}
           />
+        ) : (
+          <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+            <ImageIcon className="w-16 h-16 text-teal-600" />
+          </div>
+        )}
         
         <div className="p-4">
           <div className="text-xl font-bold text-teal-800 mb-2">{name}</div>
