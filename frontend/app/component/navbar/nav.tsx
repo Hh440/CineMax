@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-//import { ClapperboardIcon, UserIcon, GlobeIcon, HomeIcon, BuildingIcon, ClockIcon, CalendarIcon, TicketIcon } from 'lucide-react'
+import{ ClapperboardIcon, UserIcon, GlobeIcon, HomeIcon, BuildingIcon, ClockIcon, CalendarIcon, TicketIcon } from 'lucide-react'
 
 export const Nav=()=>{
     return (
@@ -10,7 +10,7 @@ export const Nav=()=>{
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-4">
             <div className="text-2xl font-bold text-teal-700 flex items-center gap-2">
-              {/*<ClapperboardIcon className="w-8 h-8" />*/}
+              <ClapperboardIcon className="w-8 h-8" />
               <span>CineMax</span>
             </div>
           </div>
