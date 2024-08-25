@@ -1,8 +1,8 @@
 'use client'
 
-import { TicketIcon } from "lucide-react";
+
 import { useShowtime } from "@/app/hooks";
-import { Movies } from "@/app/hooks";
+
 import { useParams } from "next/navigation";
 import Link from "next/link";
 
