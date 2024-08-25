@@ -5,21 +5,34 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-type TheatreDetailsProps = {
+type Showtime = {
     id: string;
-    theatre: {
-        name: string;
-        description: string;
-        city: string;
-        seats: number;
-        ticketPrice: number;
-        startDate: string;
-        endDate: string;
-        image: string;
-        movies: Array<any>; // Adjust the type according to your movie object structure
-    };
+    startDate: string;
+}; 
+
+type Movie = {
+    id: string;
+    title: string;
+    showtimes?: Showtime[];
 };
 
+type Theatre = {
+    name: string;
+    description: string;
+    city: string;
+    seats: number;
+    ticketPrice: number;
+    startDate: string;
+    endDate: string;
+    image: string;
+    movies: Movie[];
+};
+  
+type TheatreDetailsProps = {
+    id: string;
+    theatre: Theatre;
+};
+  
 export function TheatreDetails({ id, theatre }: TheatreDetailsProps) {
     const router = useRouter();
 

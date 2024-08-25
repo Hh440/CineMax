@@ -8,9 +8,13 @@ export interface Theater{
   "name":string,
   "seats":number,
   "ticketPrice":number,
+  "city":string,
   "image":string,
   "Address":string,
   "id":string,
+  "description":string,
+  "startDate":string,
+  "endDate":string,
   "movies":Movies[]
 }
 
@@ -109,13 +113,13 @@ export const useMovie = ({ id }: { id: string }) => {
 
 export const useAllMovie = () => {
   const [loading,setLoading]= useState(true)
-  const [movies,setMovies]= useState(undefined)
+  const [movies, setMovies] = useState<Movies[]>([]);
 
   useEffect(() => {
           try {
             axios.get(`${BACKEND_URL}/api/movie/movies`)
             .then(response => {
-              setMovies(response.data.movies);
+              setMovies(response.data.movies || []);
               console.log(response.data.movies);
               setLoading(false);
             }) 

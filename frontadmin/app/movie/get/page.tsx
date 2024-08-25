@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useAllMovie } from "@/app/hooks";
+import { Movies, useAllMovie } from "@/app/hooks";
 import { Nav } from "@/app/component/navbar/nav";
 
 const AllMovies = () => {
@@ -11,7 +11,7 @@ const AllMovies = () => {
   if (loading)
     return <div className="text-center py-20 text-lg">Loading...</div>;
 
-  const handleCardClick = (id) => {
+  const handleCardClick = (id : string) => {
     router.push(`/movie/get/${id}`);
   };
 
@@ -20,7 +20,7 @@ const AllMovies = () => {
       <Nav />
       <div className="text-xl font-semibold mb-2">Movies</div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-        {movies.map((movie) => (
+        {movies.map((movie : Movies) => (
           <div
             key={movie.id}
             className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer"

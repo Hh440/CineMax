@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { BACKEND_URL } from "@/config";
 
-
+  
 interface MovieDetailProps {
   movie: Movies | undefined;
 }

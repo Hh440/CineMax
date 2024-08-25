@@ -126,7 +126,7 @@ function EnterDetails() {
             if (response.status === 200) {
               const id = response.data.id;
               console.log("Theatre created successfully");
-              alert("Theatre created successfully");
+              alert("Theatre created successfully");  
               push(`/theatre/get/${id}`);
             } else {
               console.log("Unexpected response status:", response.status);

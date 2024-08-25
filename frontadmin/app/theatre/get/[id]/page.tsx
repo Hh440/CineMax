@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useTheatre } from '@/app/hooks';
+import { Theater, useTheatre } from '@/app/hooks';
 import { useParams } from "next/navigation";
 import { TheatreDetails } from '../../components/TheatreDetails';
 import { Nav } from '@/app/component/navbar/nav';
@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <div>
       <Nav/>
-      <TheatreDetails id = {id} theatre = {theatre}></TheatreDetails>
+      {theatre && <TheatreDetails id={id || ''} theatre={theatre as Theater} />}
     </div>
   );
 }

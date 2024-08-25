@@ -1,7 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
 
-export default function MoviesShowtimes({ movies }) {
+type Showtime = {
+  id: string;
+  startDate: string;
+};
+
+type Movie = {
+  id: string;
+  title: string;
+  showtimes?: Showtime[]; // Optional since it can be empty
+};
+
+type MoviesShowtimesProps = {
+  movies: Movie[];
+};
+
+export default function MoviesShowtimes({ movies } : MoviesShowtimesProps) {
   return (
     
     <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl mx-auto">
