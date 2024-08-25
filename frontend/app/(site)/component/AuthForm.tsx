@@ -69,7 +69,14 @@ export const AuthForm = ()=>{
             .then(()=>signIn('credentials',data))
             
         } catch (error) {
-            console.error('Error during registration:', error);
+            if (axios.isAxiosError(error) && error.response?.status === 409) {
+                
+                toast.error('Email is already registered');
+            }else {
+                console.error('Error during registration:', error);
+                toast.error('Registration failed. Please try again.');
+            }
+            
         } finally {
             setIsLoading(false);
         }
