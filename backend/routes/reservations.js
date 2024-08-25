@@ -32,7 +32,7 @@ router.get('/get-reservations', async (req, res) => {
 router.post('/add-reservation', async (req, res) => {
     try {
         
-        const {ticketPrice,movieName,Time,date } = req.body;
+        const {ticketPrice,movieName,time,date } = req.body;
 
         // Fetch showtime details to calculate total price
         /*const showtime = await prisma.showtime.findUnique({
@@ -61,7 +61,7 @@ router.post('/add-reservation', async (req, res) => {
                 orderId: `ORD-${Math.random().toString(36).substring(2, 15)}`, // Random Order ID
                 ticketPrice: ticketPrice,
                 movieName:movieName,
-                TIme:Time
+                TIme: time ? new Date(time) : new Date(),
                 //total,
                 //movieId: showtime.movieId,
                 //theatreId: showtime.theatreId,

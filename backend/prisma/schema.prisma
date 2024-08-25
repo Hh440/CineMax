@@ -75,7 +75,7 @@ model Reservation {
   ticketPrice Float?
   total       Float?
   movieName  String?
-  TIme        String?
+  TIme        DateTime?
  // movie       Movie     @relation(fields: [movieId], references: [id])
   //movieId     String
   //theatre     Theatre   @relation(fields: [theatreId], references: [id])

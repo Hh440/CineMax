@@ -16,7 +16,7 @@ export interface Theater{
 
 export interface Reservation{
   "movieName":string,
-  "Time":string,
+  "Time":Date,
   "orderId":string,
   "ticketPrice":number
 }
@@ -223,6 +223,7 @@ export const useReservation = () => {
   useEffect(() => {
     axios.get(`${BACKEND_URL}/api/reservation/get-reservations`)
       .then(response => {
+        
         console.log(response.data.reservations);
         setReservation(response.data.reservations || []); // Fallback to an empty array if data is undefined or null
         setLoading(false);

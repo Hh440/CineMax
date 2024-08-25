@@ -4,7 +4,7 @@ interface ResercationProps {
   movieName: string;
   orderId: string;
   ticketPrice: number;
-  time: string;
+  time:Date;
 }
 
 const Show: React.FC<ResercationProps> = ({
@@ -13,6 +13,9 @@ const Show: React.FC<ResercationProps> = ({
   ticketPrice,
   time
 }) => {
+
+  const formattedTime = new Date(time).toLocaleDateString();
+  console.log(formattedTime)
   return (
     <div className="container px-6 py-10 bg-white shadow-md overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300 max-w-sm mx-auto"> {/* Increased padding */}
       
@@ -46,7 +49,7 @@ const Show: React.FC<ResercationProps> = ({
                   <ClockIcon className="w-6 h-6 text-primary" />
                   <span className="text-lg font-medium">Time:</span>
                 </div>
-                <span className="text-lg">{time}</span>
+                <span className="text-lg">{formattedTime}</span>
               </div>
             </div>
           </div>
