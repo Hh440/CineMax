@@ -1,4 +1,4 @@
-import { CalendarIcon, ClockIcon, TicketIcon, BanknoteIcon } from "lucide-react"
+//import { CalendarIcon, ClockIcon, TicketIcon, BanknoteIcon } from "lucide-react"
 
 interface ResercationProps {
   movieName: string;
@@ -28,7 +28,7 @@ const Show: React.FC<ResercationProps> = ({
               {/* Order ID */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4"> {/* Increased spacing between icon and text */}
-                  <TicketIcon className="w-6 h-6 text-primary" /> {/* Increased icon size */}
+                  {/*<TicketIcon className="w-6 h-6 text-primary" /> */} {/* Increased icon size */}
                   <span className="text-lg font-medium">Order ID:</span> {/* Increased font size */}
                 </div>
                 <div className="border rounded px-3 py-2 text-lg ml-10">{orderId}</div> {/* Increased padding and font size */}
@@ -37,7 +37,7 @@ const Show: React.FC<ResercationProps> = ({
               {/* Price */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <BanknoteIcon className="w-6 h-6 text-primary" />
+                  {/*<BanknoteIcon className="w-6 h-6 text-primary" /> */}
                   <span className="text-lg font-medium">Price:</span>
                 </div>
                 <span className="text-lg">${ticketPrice.toFixed(2)}</span>
@@ -46,7 +46,7 @@ const Show: React.FC<ResercationProps> = ({
               {/* Time */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <ClockIcon className="w-6 h-6 text-primary" />
+                  {/*<ClockIcon className="w-6 h-6 text-primary" />*/}
                   <span className="text-lg font-medium">Time:</span>
                 </div>
                 <span className="text-lg">{formattedTime}</span>
