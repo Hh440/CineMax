@@ -40,7 +40,8 @@ export default function CreateShowtimeForm({ movieId , theatreId, onShowtimeCrea
       console.log("Showtime created:", response.data);
       onShowtimeCreated(); // Call the callback function to refresh data or show a success message
     } catch (error) {
-      console.error("Error creating showtime:", error.response?.data || error.message);
+      const err = error as any;
+      console.error("Error creating showtime:", err.response?.data || err.message);
     }
   };
 
