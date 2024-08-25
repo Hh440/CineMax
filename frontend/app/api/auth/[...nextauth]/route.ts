@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google"
 
 
-const handler =NextAuth({
+const authOptions :AuthOptions={
     providers:[
         GoogleProvider({
             clientId:process.env.GOOGLE_CLIENT_ID   as string,
@@ -47,7 +47,9 @@ const handler =NextAuth({
         strategy:'jwt'
     },
     secret:process.env.NEXTAUTH_SECRET
-})
+}
+
+const handler = NextAuth(authOptions)
 
 
 export {handler as GET ,handler as POST}
