@@ -6,11 +6,9 @@ import { Movies } from "@/app/hooks";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 
-interface MovieDetailProps {
-  movie: Movies | undefined;
-}
 
-const Selection = ({ movie }: MovieDetailProps) => {
+
+const Selection = () => {
   const { id } = useParams(); 
   const movieId = Array.isArray(id) ? id[0] : id  || '';
 
