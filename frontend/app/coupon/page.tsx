@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import { Check, Copy, Film } from "lucide-react"
+//import { Check, Copy, Film } from "lucide-react"
 import Link from "next/link"
 
 export default function Coupon() {
@@ -66,12 +66,12 @@ export default function Coupon() {
                     >
                       {copiedCode === "WEEKEND20" ? (
                         <>
-                          <Check className="h-4 w-4" />
+                          {/*<Check className="h-4 w-4" />*/}
                           <span>Copied</span>
                         </>
                       ) : (
                         <>
-                          <Copy className="h-4 w-4" />
+                         {/* <Copy className="h-4 w-4" /> */}
                           <span>Copy</span>
                         </>
                       )}
@@ -97,12 +97,12 @@ export default function Coupon() {
                     >
                       {copiedCode === "FAMILY15" ? (
                         <>
-                          <Check className="h-4 w-4" />
+                          {/*<Check className="h-4 w-4" />*/}
                           <span>Copied</span>
                         </>
                       ) : (
                         <>
-                          <Copy className="h-4 w-4" />
+                         {/* <Copy className="h-4 w-4" /> */}
                           <span>Copy</span>
                         </>
                       )}
@@ -127,12 +127,12 @@ export default function Coupon() {
                     >
                       {copiedCode === "MATINEE25" ? (
                         <>
-                          <Check className="h-4 w-4" />
+                         {/* <Check className="h-4 w-4" /> */}
                           <span>Copied</span>
                         </>
                       ) : (
                         <>
-                          <Copy className="h-4 w-4" />
+                          {/*<Copy className="h-4 w-4" />*/}
                           <span>Copy</span>
                         </>
                       )}
@@ -195,13 +195,14 @@ export default function Coupon() {
         </section>
       </main>
 
-      {/* Decorative elements */}
+      {/* Decorative elements 
       <div className="absolute top-32 left-4 text-teal-200 transform -rotate-12 opacity-50">
         <Film className="w-24 h-24" />
       </div>
       <div className="absolute bottom-32 right-4 text-teal-200 transform rotate-12 opacity-50">
         <Film className="w-24 h-24" />
       </div>
+      */}
     </div>
   )
 }

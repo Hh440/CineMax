@@ -3,7 +3,7 @@
 import { Theater } from "@/app/hooks";
 import { useShowTheatertime } from "@/app/hooks";
 import Link from "next/link";
-import { BuildingIcon } from "lucide-react";
+//import { BuildingIcon } from "lucide-react";
 
 interface TheaterDetailProps {
   theatre: Theater | undefined;
@@ -76,13 +76,14 @@ const TheaterDetail = ({ theatre }: TheaterDetailProps) => {
         )}
       </div>
 
-      {/* Decorative elements */}
+      {/* Decorative elements 
       <div className="absolute top-32 left-4 text-teal-200 transform -rotate-12 opacity-50">
         <BuildingIcon className="w-24 h-24" />
       </div>
       <div className="absolute bottom-4 right-4 text-teal-300 transform rotate-12 opacity-50">
         <BuildingIcon className="w-32 h-32" />
       </div>
+      */}
     </div>
   );
 };
