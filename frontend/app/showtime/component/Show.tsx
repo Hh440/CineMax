@@ -14,7 +14,7 @@ const Show: React.FC<ResercationProps> = ({
   time
 }) => {
 
-  const formattedTime = new Date(time).toDateString();
+  const formattedTime = new Date(time).toISOString();
   console.log(formattedTime)
   return (
     <div className="container px-6 py-10 bg-white shadow-md overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300 max-w-sm mx-auto"> {/* Increased padding */}
