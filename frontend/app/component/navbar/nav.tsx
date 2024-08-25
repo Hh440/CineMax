@@ -18,26 +18,26 @@ export const Nav=()=>{
            
             <li>
               <a href={'/display'} className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
-               {/* <BuildingIcon className="w-4 h-4" /> */}
+                <BuildingIcon className="w-4 h-4" /> 
                 <span>Theaters</span>
               </a>
             </li>
             <li>
               <a href={'/movies'} className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
-               {/* <FilmIcon className="w-4 h-4" /> */}
+                <FilmIcon className="w-4 h-4" /> 
                 <span>Movies</span>
               </a>
             </li>
             <li>
               <a href={'/showtime'} className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
-               {/* <ClockIcon className="w-4 h-4" /> */}
+                 <ClockIcon className="w-4 h-4" /> 
                 <span>Showtimes</span>
               </a>
             </li>
           
             <li>
               <a href={'/coupon'} className="flex items-center gap-1 text-gray-600 hover:text-teal-600 transition-colors px-2 py-1">
-               {/* <TicketIcon className="w-4 h-4" /> */}
+                <TicketIcon className="w-4 h-4" /> 
                 <span>Coupons</span>
               </a>
             </li>
