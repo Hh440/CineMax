@@ -7,7 +7,13 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs, { Dayjs } from 'dayjs';
 import { BACKEND_URL } from '@/config';
 
-export default function CreateShowtimeForm({ movieId, theatreId, onShowtimeCreated }) {
+interface CreateShowtimeFormProps {
+  movieId: string;
+  theatreId: string;
+  onShowtimeCreated: () => void;
+}
+
+export default function CreateShowtimeForm({ movieId , theatreId, onShowtimeCreated } : CreateShowtimeFormProps) {
   const [showtimeData, setShowtimeData] = useState({
     startDate: '',
     endDate: '',
