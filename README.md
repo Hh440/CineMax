@@ -28,12 +28,6 @@ CineMax allows you to view your favorite movies and book them in your nearest th
 - **Tailwind CSS**: Utility-first CSS framework for styling the frontend.
 - **NextAuth**: Authentication solution for handling user login and registration.
 
-## Demo Video
-
-Watch the demo of CineMax in action:
-
-[![CineMax Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID_HERE)
-
 
 ## Installation
 
@@ -119,6 +113,12 @@ Ensure you have the following installed on your machine:
     ```bash
     npm run dev
     ```
+## Demo Video
+
+Watch the demo of CineMax in action:
+
+https://github.com/user-attachments/assets/17eeba03-e652-43c6-934e-e882ae71d651
+
     
 **Cheers...
 Regards Harsh and  Aasif 
