@@ -1,5 +1,10 @@
 # CineMax 🎬
 
+- [User Frontend](https://cine-max-bg33-git-main-hh440s-projects.vercel.app/)
+- [Admin Frontend](https://admin-frontend-ln6cgy9nw-aasiflm10s-projects.vercel.app/)
+- [Backend Deployment Link](https://cinemax-98lu.onrender.com/)
+
+
 CineMax allows you to view your favorite movies and book them in your nearest theaters. You can browse through a wide selection of movies, check showtimes, and reserve your seats all in one place. Enjoy a seamless movie booking experience with CineMax!
 
 ## Features
